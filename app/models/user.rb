@@ -26,4 +26,7 @@ class User < ActiveRecord::Base
 
   has_many :authentications, :dependent => :destroy
   accepts_nested_attributes_for :authentications
+
+  has_many :stakes, :dependent => :restrict_with_error
+  has_many :bets, through: :stakes
 end

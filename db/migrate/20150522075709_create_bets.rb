@@ -3,8 +3,8 @@ class CreateBets < ActiveRecord::Migration
     create_table :bets do |t|
       t.string :title, null: false
       t.text :body
-      t.datetime :start_dt
-      t.datetime :stop_dt
+      t.datetime :started_at
+      t.datetime :stopped_at
       t.integer :status, null: false, default: 0
 
       t.timestamps null: false

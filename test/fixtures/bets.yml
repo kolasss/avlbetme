@@ -5,8 +5,8 @@
 #  id         :integer          not null, primary key
 #  title      :character varyin not null
 #  body       :text
-#  start_dt   :timestamp withou
-#  stop_dt    :timestamp withou
+#  started_at :timestamp withou
+#  stopped_at :timestamp withou
 #  status     :integer          default(0), not null
 #  created_at :timestamp withou not null
 #  updated_at :timestamp withou not null
@@ -17,13 +17,13 @@
 one:
   title: MyString
   body: MyText
-  start_dt: 2015-05-22 16:57:10
-  stop_dt: 2015-05-22 16:57:10
+  started_at: 2015-05-22 16:57:10
+  stopped_at: 2015-05-23 16:57:10
   status: 1
 
 two:
-  title: MyString
-  body: MyText
-  start_dt: 2015-05-22 16:57:10
-  stop_dt: 2015-05-22 16:57:10
-  status: 1
+  title: MyString2
+  body: MyText3
+  started_at: 2015-05-22 16:57:10
+  stopped_at: 2015-05-23 16:57:10
+  status: 0

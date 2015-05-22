@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150522112443) do
+ActiveRecord::Schema.define(version: 20150522151321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,12 +29,35 @@ ActiveRecord::Schema.define(version: 20150522112443) do
   create_table "bets", force: :cascade do |t|
     t.string   "title",                  null: false
     t.text     "body"
-    t.datetime "start_dt"
-    t.datetime "stop_dt"
+    t.datetime "started_at"
+    t.datetime "stopped_at"
     t.integer  "status",     default: 0, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "stake_types", force: :cascade do |t|
+    t.string   "title",                      null: false
+    t.boolean  "numeric",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "stakes", force: :cascade do |t|
+    t.text     "objective"
+    t.text     "bid",           default: "0",   null: false
+    t.integer  "stake_type_id"
+    t.integer  "user_id"
+    t.integer  "bet_id"
+    t.boolean  "winner",        default: false
+    t.boolean  "paid",          default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "stakes", ["bet_id"], name: "index_stakes_on_bet_id", using: :btree
+  add_index "stakes", ["stake_type_id"], name: "index_stakes_on_stake_type_id", using: :btree
+  add_index "stakes", ["user_id"], name: "index_stakes_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                         null: false

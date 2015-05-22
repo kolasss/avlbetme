@@ -5,8 +5,8 @@
 #  id         :integer          not null, primary key
 #  title      :character varyin not null
 #  body       :text
-#  start_dt   :timestamp withou
-#  stop_dt    :timestamp withou
+#  started_at :timestamp withou
+#  stopped_at :timestamp withou
 #  status     :integer          default(0), not null
 #  created_at :timestamp withou not null
 #  updated_at :timestamp withou not null
@@ -20,4 +20,7 @@ class Bet < ActiveRecord::Base
     finished: 1,
     canceled: 2
   }
+
+  has_many :stakes, :dependent => :destroy
+  has_many :users, through: :stakes
 end

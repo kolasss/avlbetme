@@ -22,5 +22,8 @@ module Avlbetme
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    settings = YAML.load_file(Rails.root.join('config/settings.yml'))[Rails.env]
+    settings.each { |key, value| config.send("#{key}=", value) }
   end
 end

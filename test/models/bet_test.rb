@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: bets
+#
+#  id         :integer          not null, primary key
+#  title      :character varyin not null
+#  body       :text
+#  start_dt   :timestamp withou
+#  stop_dt    :timestamp withou
+#  status     :integer          default(0), not null
+#  created_at :timestamp withou not null
+#  updated_at :timestamp withou not null
+#
+
 require 'test_helper'
 
 class BetTest < ActiveSupport::TestCase

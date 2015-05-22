@@ -6,4 +6,16 @@ html lang='ru'
     = csrf_meta_tags
     = javascript_include_tag :application, 'data-turbolinks-track' => true
   body
+    nav.nav
+      li = link_to 'Home', root_path
+      li = link_to 'users', users_path
+      li = link_to 'Login with VK', auth_at_provider_path(:provider => :vk)
+      / li = link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook)
+
+      li = link_to 'Log Out', log_out_path, method: :delete
+
+    .flash-block
+      #alert.alert-notice = flash[:notice]
+      #alert.alert-alert = flash[:alert]
+
     == yield

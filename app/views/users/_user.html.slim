@@ -1,0 +1,4 @@
+li
+  = link_to user.name, user
+  = link_to "delete", user, class: 'btn', method: :delete,
+                            data: { confirm: "You sure?" }

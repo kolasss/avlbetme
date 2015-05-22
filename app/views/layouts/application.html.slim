@@ -6,16 +6,21 @@ html lang='ru'
     = csrf_meta_tags
     = javascript_include_tag :application, 'data-turbolinks-track' => true
   body
-    nav.nav
-      li = link_to 'Home', root_path
-      li = link_to 'users', users_path
-      li = link_to 'Login with VK', auth_at_provider_path(:provider => :vk)
-      / li = link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook)
+    header.navbar.navbar-inverse
+      ul.nav.navbar-nav(role="navigation")
+        li = link_to 'Home', root_path
+        li = link_to 'users', users_path
 
-      li = link_to 'Log Out', log_out_path, method: :delete
+        - if logged_in?
+          li = link_to current_user.name, current_user
+          li = link_to 'Log Out', log_out_path, method: :delete
+        - else
+          li = link_to 'Login with VK', auth_at_provider_path(:provider => :vk)
+          / li = link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook)
 
-    .flash-block
-      #alert.alert-notice = flash[:notice]
-      #alert.alert-alert = flash[:alert]
 
-    == yield
+    .container
+      - unless flash.empty?
+        .page-messages
+          = messages
+      == yield

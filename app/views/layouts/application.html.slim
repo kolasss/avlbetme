@@ -8,16 +8,16 @@ html lang='ru'
   body
     header.navbar.navbar-inverse
       ul.nav.navbar-nav(role="navigation")
-        li = link_to 'Home', root_path
-        li = link_to 'users', users_path
-        li = link_to 'stake types', stake_types_path
+        li = link_to 'AvlBet.me', root_path
+        li = link_to 'Пользователи', users_path
+        li = link_to 'Типы ставок', stake_types_path
         li = link_to 'Новое пари', new_bet_path
 
         - if logged_in?
           li = link_to current_user.name, current_user
-          li = link_to 'Log Out', log_out_path, method: :delete
+          li = link_to 'Выйти', log_out_path, method: :delete
         - else
-          li = link_to 'Login with VK', auth_at_provider_path(:provider => :vk)
+          li = link_to 'Зайти через ВК', auth_at_provider_path(:provider => :vk)
           / li = link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook)
 
 

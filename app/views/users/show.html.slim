@@ -16,5 +16,24 @@
             = friend.name
           end
   .col-md-8
-    ul.bets
-      = render @bets
+    .panel
+      h2 Живые пари
+      ul.bets
+        = render @user.bets.opened
+
+    .panel
+      h2 Завершенные пари
+      ul.bets
+        = render @user.bets.finished
+
+    .panel
+      h2 Выйгранные ставки
+
+      ul.stakes
+        = render @user.stakes.win
+
+    .panel
+      h2 Проигранные ставки
+
+      ul.stakes
+        = render @user.stakes.lose

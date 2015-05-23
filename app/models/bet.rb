@@ -24,6 +24,8 @@ class Bet < ActiveRecord::Base
   has_many :stakes, :dependent => :destroy
   has_many :users, through: :stakes
 
+  # scope :loss, -> (id) { where customer_id: id }
+
   # для создания дефолтной ставки
   def create_default_stake_for_user user_id
     default_params = {

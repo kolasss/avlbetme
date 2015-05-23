@@ -1,0 +1,66 @@
+ru:
+  helpers:
+    submit:
+      create: Сохранить
+      update: Сохранить измения
+
+  simple_form:
+    yes: Да
+    no: Нет
+    required:
+      text: Обязательное к заполнению
+      mark: "*"
+
+    error_notification:
+      default_message: "Пожалуйста, исправьте следующие ошибки:"
+
+    labels:
+      defaults:
+        title: Наименование
+        file: Файл
+        kind: Тип
+
+      user:
+        password: Пароль
+        name: ФИО
+        password_confirmation: Подтверждение пароля
+        current_password: Текущий пароль
+        email: Email
+        role: Роль
+        last_sign_in_at: Заходил
+        last_sign_in_ip: Последний IP
+        current_sign_in_at: Текущее время входа
+        current_sign_in_ip: Текущий IP
+        sign_in_count: Количество входов
+        remember_me: Запомнить меня
+        phone: Телефон
+        position: Должность
+        company_type: Ваша организация
+
+        edit:
+          password: Новый пароль
+          password_confirmation: Подтверждение нового пароля
+
+      bet:
+        title: Заголовок
+        body: Описание
+        started_at: Дата начала
+        stopped_at: Дата конца
+        
+
+    placeholders:
+      defaults:
+        # title: Наименование
+      user:
+        name: Иванов Иван Иванович
+        email: ivan@example.com
+        password: 12345678
+        password_confirmation: 12345678
+        # edit:
+        #   password: Новый пароль
+        #   password_confirmation: Подтверждение нового пароля
+
+      category:
+        title: Наименование
+      subcategory:
+        title: Наименование

@@ -11,7 +11,7 @@ class BetsController < ApplicationController
   def create
     @bet = Bet.new(bet_params)
     if @bet.save
-      @bet.create_default_stake_for_user current_user.id if current_user
+      @bet.create_default_stake_for_user current_user.id
       flash[:info] = "Пари создано."
       redirect_to @bet
     else

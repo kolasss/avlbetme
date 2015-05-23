@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+StakeType.create title: 'Руб.', numeric: true
+StakeType.create title: 'Другое', numeric: false
+p 'Стандартные типы ставок'

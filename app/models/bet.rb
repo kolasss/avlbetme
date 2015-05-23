@@ -31,7 +31,7 @@ class Bet < ActiveRecord::Base
       user_id: user_id,
       stake_type: StakeType.first
     }
-    stakes.create default_params
+    stakes.create! default_params
   end
 
   def finish! win_ids, pass_ids

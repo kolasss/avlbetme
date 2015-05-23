@@ -6,7 +6,7 @@ class CreateStakes < ActiveRecord::Migration
       t.belongs_to :stake_type, index: true
       t.belongs_to :user, index: true
       t.belongs_to :bet, index: true
-      t.boolean :winner, default: false
+      t.integer :status, null: false, default: 0
       t.boolean :paid, default: false
 
       t.timestamps null: false

@@ -9,9 +9,11 @@
 #  updated_at                   :timestamp withou
 #  remember_me_token            :character varyin
 #  remember_me_token_expires_at :timestamp withou
+#  friends                      :jsonb            default({}), not null
 #
 # Indexes
 #
+#  index_users_on_friends            (friends)
 #  index_users_on_remember_me_token  (remember_me_token)
 #
 

@@ -6,18 +6,14 @@ class OauthsController < ApplicationController
   def callback
     provider = auth_params[:provider]
 
-    # p request.env
-    # p '===================='
     if @user = login_from(provider, true)
       redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
     else
       begin
-        p request.env
-        p '===================='
         @user = create_from(provider)
+        @user.get_friends_from_vk
 
         reset_session # protect from session fixation attack
-        # auto_login(@user)
         auto_login(@user, true)
         redirect_to root_path, :notice => "Logged in from #{provider.titleize}!"
       rescue
@@ -25,9 +21,6 @@ class OauthsController < ApplicationController
       end
     end
   end
-
-  #example for Rails 4: add private method below and use "auth_params[:provider]" in place of
-  #"params[:provider] above.
 
   private
     def auth_params

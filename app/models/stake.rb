@@ -8,7 +8,7 @@
 #  stake_type_id :integer
 #  user_id       :integer
 #  bet_id        :integer
-#  winner        :boolean          default(FALSE)
+#  status        :integer          default(0), not null
 #  paid          :boolean          default(FALSE)
 #  created_at    :timestamp withou not null
 #  updated_at    :timestamp withou not null
@@ -29,4 +29,14 @@ class Stake < ActiveRecord::Base
   belongs_to :user
   belongs_to :bet
   belongs_to :stake_type
+
+  enum status: {
+    pass: 0,
+    win: 1,
+    lose: 2
+  }
+
+  def user_name
+    user.name
+  end
 end

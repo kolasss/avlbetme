@@ -18,12 +18,10 @@ gem "autoprefixer-rails" #auto web prefixes for css
 gem 'annotate'
 gem "slim-rails"
 
-# gem 'omniauth'
-# # gem 'omniauth-facebook'
-# gem 'omniauth-vkontakte'
-
 gem "sorcery"
 gem 'pundit'
+
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

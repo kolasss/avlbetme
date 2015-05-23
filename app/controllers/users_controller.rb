@@ -5,6 +5,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    p @user.friends[:vk_friends_ids]
+    @bets = @user.bets
+    @friends = @user.friends_list
+    p @friends
   end
 
   def destroy
@@ -14,7 +18,7 @@ class UsersController < ApplicationController
     else
       flash[:alert] = "Error deleting"
     end
-    redirect_to users_url
+    redirect_to users_path
   end
 
 end

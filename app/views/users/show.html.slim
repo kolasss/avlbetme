@@ -6,5 +6,15 @@
       h1
         = @user.name
       = image_tag @user.photo
+
+    section.user_friends
+      h3 Друзья
+      - @friends.each do |friend|
+        .friend_small
+          = link_to friend do
+            = image_tag friend.photo if friend.photo.present?
+            = friend.name
+          end
   .col-md-8
-    | ololo
+    ul.bets
+      = render @bets

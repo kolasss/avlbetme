@@ -23,4 +23,36 @@ class Bet < ActiveRecord::Base
 
   has_many :stakes, :dependent => :destroy
   has_many :users, through: :stakes
+
+  # для создания дефолтной ставки
+  def create_default_stake_for_user user_id
+    default_params = {
+      bid: 0,
+      user_id: user_id,
+      stake_type: StakeType.first
+    }
+    stakes.create default_params
+  end
+
+  def finish! win_ids, pass_ids
+    finished!
+
+    stakes.where(id: win_ids).each do |stake|
+      stake.win!
+    end
+    stakes.where(id: pass_ids).each do |stake|
+      stake.pass!
+    end
+    lose_ids = win_ids + pass_ids
+    stakes.where.not(id: lose_ids).each do |stake|
+      stake.lose!
+    end
+  end
+
+  def cancel!
+    canceled!
+    stakes.each do |stake|
+      stake.pass!
+    end
+  end
 end

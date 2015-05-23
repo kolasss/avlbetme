@@ -1,0 +1,12 @@
+= simple_form_for @bet do |f|
+
+  = f.input :title
+  = f.input :body
+  = f.input :started_at
+  = f.input :stopped_at
+  / = f.input :status, as: :select, collection: Bet.statuses.keys
+  hr
+  = f.button :submit
+
+
+  / = render 'attachments', f: f

@@ -8,7 +8,7 @@
 #  stake_type_id :integer
 #  user_id       :integer
 #  bet_id        :integer
-#  winner        :boolean          default(FALSE)
+#  status        :integer          default(0), not null
 #  paid          :boolean          default(FALSE)
 #  created_at    :timestamp withou not null
 #  updated_at    :timestamp withou not null

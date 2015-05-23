@@ -10,6 +10,7 @@ html lang='ru'
       ul.nav.navbar-nav(role="navigation")
         li = link_to 'Home', root_path
         li = link_to 'users', users_path
+        li = link_to 'stake types', stake_types_path
         li = link_to 'Новое пари', new_bet_path
 
         - if logged_in?

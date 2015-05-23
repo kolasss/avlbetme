@@ -7,5 +7,11 @@ Rails.application.routes.draw do
   delete '/log_out', to: 'sessions#destroy', as: :log_out
   resources :users, only: [:index, :show, :destroy]
 
-  resources :bets, except: [:index]
+  resources :bets, except: [:index] do
+    get :stop, on: :member
+    post :finish, on: :member
+    resources :stakes, except: [:index, :show]
+  end
+
+  resources :stake_types, except: [:show]
 end

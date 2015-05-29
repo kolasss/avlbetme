@@ -11,10 +11,10 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: руб
+rub:
+  title: Руб.
   numeric: true
 
-two:
-  title: другое
+other:
+  title: Другое
   numeric: false

@@ -22,8 +22,38 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   objective: MyString
+one_depp:
+  objective: чтото сделать
+  bid: 1000
+  stake_type: rub
+  user: depp
+  bet: one
+  status: 1
+  paid: true
 
-# two:
-#   objective: MyString
+two_depp:
+  objective: чтото сделать aasd
+  bid: отжаться 100 раз
+  stake_type: other
+  user: depp
+  bet: two
+  status: 0
+  paid: false
+
+one_pit:
+  objective: чтото сделать лучше
+  bid: 1000
+  stake_type: rub
+  user: pit
+  bet: one
+  status: 2
+  paid: true
+
+two_depp:
+  objective: чтото сделать asfasfaf
+  bid: встать на голову
+  stake_type: other
+  user: depp
+  bet: two
+  status: 0
+  paid: false

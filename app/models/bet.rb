@@ -39,7 +39,7 @@ class Bet < ActiveRecord::Base
   def finish! win_ids, pass_ids=[]
     if win_ids.empty?
       errors.add(:finish, "Выберите победителя")
-      return
+      return false
     end
 
     finished!

@@ -45,19 +45,21 @@ class UserTest < ActiveSupport::TestCase
     assert @user.authentications.any?
   end
 
-  test "vk_id should match authentication uid" do
+  test "method vk_id should match authentication uid" do
     @user.save
+    @vk_authentication.save
     assert_equal @user.vk_id, @vk_authentication.uid
   end
 
   test "associated authentications should be destroyed" do
     @user.save
+    @vk_authentication.save
     assert_difference 'Authentication.count', -1 do
       @user.destroy
     end
   end
 
-  test "friends_list should return right users" do
+  test "method friends_list should return right users" do
     depp = users(:depp)
     pit = users(:pit)
     jolie = users(:jolie)

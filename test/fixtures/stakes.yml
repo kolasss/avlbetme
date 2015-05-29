@@ -30,16 +30,6 @@ one_depp:
   bet: finished
   status: 1
   paid: true
-
-two_depp:
-  objective: чтото сделать aasd
-  bid: отжаться 100 раз
-  stake_type: other
-  user: depp
-  bet: opened
-  status: 0
-  paid: false
-
 one_pit:
   objective: чтото сделать лучше
   bid: 1000
@@ -50,10 +40,20 @@ one_pit:
   paid: true
 
 two_depp:
-  objective: чтото сделать asfasfaf
-  bid: встать на голову
+  objective: чтото сделать aasd
+  bid: отжаться 100 раз
   stake_type: other
   user: depp
   bet: opened
-  status: 0
-  paid: false
+two_pit:
+  objective: чтото сделать asfasfaf
+  bid: встать на голову
+  stake_type: other
+  user: pit
+  bet: opened
+two_jolie:
+  objective: чтото сделать asfasdasfaf
+  bid: встать на голову
+  stake_type: other
+  user: jolie
+  bet: opened

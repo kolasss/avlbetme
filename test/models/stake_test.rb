@@ -42,6 +42,21 @@ class StakeTest < ActiveSupport::TestCase
     assert_not @stake.valid?
   end
 
+  test "stake_type should be present" do
+    @stake.stake_type = nil
+    assert_not @stake.valid?
+  end
+
+  test "user should be present" do
+    @stake.user = nil
+    assert_not @stake.valid?
+  end
+
+  test "bet should be present" do
+    @stake.bet = nil
+    assert_not @stake.valid?
+  end
+
   test "status should be pass" do
     assert @stake.pass?
   end
@@ -50,7 +65,7 @@ class StakeTest < ActiveSupport::TestCase
     assert_not @stake.paid?
   end
 
-  test "user_name should return correct value" do
+  test "method user_name should return correct value" do
     assert_equal @stake.user_name, @stake.user.name
   end
 end

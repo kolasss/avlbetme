@@ -14,8 +14,7 @@ require 'test_helper'
 class StakeTypeTest < ActiveSupport::TestCase
   def setup
     @stake_type = StakeType.new(
-      title: "Доллар",
-      numeric: true
+      title: "Доллар"
     )
   end
 
@@ -26,6 +25,10 @@ class StakeTypeTest < ActiveSupport::TestCase
   test "title should be present" do
     @stake_type.title = "     "
     assert_not @stake_type.valid?
+  end
+
+  test "numeric should be false" do
+    assert_not @stake_type.numeric?
   end
 
   test "should not allow destroy with exist stake" do

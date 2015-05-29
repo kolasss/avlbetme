@@ -14,14 +14,14 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+finished:
   title: Спор на бабки законченный
   body: ололол
   started_at: 2015-05-22 16:57:10
   stopped_at: 2015-05-23 16:57:10
   status: 1
 
-two:
+opened:
   title: Спор на действия
   body: фывфывфы
   started_at: 2015-05-22 16:57:10

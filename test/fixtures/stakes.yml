@@ -27,7 +27,7 @@ one_depp:
   bid: 1000
   stake_type: rub
   user: depp
-  bet: one
+  bet: finished
   status: 1
   paid: true
 
@@ -36,7 +36,7 @@ two_depp:
   bid: отжаться 100 раз
   stake_type: other
   user: depp
-  bet: two
+  bet: opened
   status: 0
   paid: false
 
@@ -45,7 +45,7 @@ one_pit:
   bid: 1000
   stake_type: rub
   user: pit
-  bet: one
+  bet: finished
   status: 2
   paid: true
 
@@ -54,6 +54,6 @@ two_depp:
   bid: встать на голову
   stake_type: other
   user: depp
-  bet: two
+  bet: opened
   status: 0
   paid: false

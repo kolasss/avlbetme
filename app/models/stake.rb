@@ -36,6 +36,7 @@ class Stake < ActiveRecord::Base
     lose: 2
   }
 
+  # label method для вывода имени в формах
   def user_name
     user.name
   end

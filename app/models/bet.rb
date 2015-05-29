@@ -36,7 +36,12 @@ class Bet < ActiveRecord::Base
     stakes.create! default_params
   end
 
-  def finish! win_ids, pass_ids
+  def finish! win_ids, pass_ids=[]
+    if win_ids.empty?
+      errors.add(:finish, "Выберите победителя")
+      return
+    end
+
     finished!
 
     stakes.where(id: win_ids).each do |stake|

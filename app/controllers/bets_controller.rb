@@ -9,13 +9,15 @@ class BetsController < ApplicationController
   end
 
   def create
-    @bet = Bet.new(bet_params)
-    if @bet.save
-      @bet.create_default_stake_for_user current_user.id
-      flash[:info] = "Пари создано."
-      redirect_to @bet
-    else
-      render 'new', alert: t(:create_failed)
+    Bet.transaction do
+      @bet = Bet.new(bet_params)
+      if @bet.save
+        @bet.create_default_stake_for_user current_user.id
+        flash[:info] = "Пари создано."
+        redirect_to @bet
+      else
+        render 'new', alert: t(:create_failed)
+      end
     end
   end
 
@@ -33,7 +35,6 @@ class BetsController < ApplicationController
 
   def destroy
     @bet.destroy
-    # redirect_to root_path
     redirect_to root_path, notice: t('admin.deleted')
   end
 
@@ -41,9 +42,12 @@ class BetsController < ApplicationController
   end
 
   def finish
-    @bet.finish! win_ids, pass_ids
-
-    redirect_to @bet, notice: 'Пари завершено'
+    if @bet.finish! win_ids, pass_ids
+      redirect_to @bet, notice: 'Пари завершено'
+    else
+      redirect_to stop_bet_path(@bet),
+        alert: @bet.errors.messages[:finish].join(', ')
+    end
   end
 
   private

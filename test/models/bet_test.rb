@@ -18,7 +18,8 @@ class BetTest < ActiveSupport::TestCase
 
   def setup
     @bet = Bet.new(
-      title: "Проверочное пари"
+      title: "Проверочное пари",
+      body: "olololo"
     )
   end
 
@@ -33,5 +34,12 @@ class BetTest < ActiveSupport::TestCase
 
   test "status should be opened" do
     assert @bet.opened?
+  end
+
+  test "should have users" do
+    depp = users(:depp)
+    bet = bets(:finished)
+
+    assert bet.users.include? depp
   end
 end

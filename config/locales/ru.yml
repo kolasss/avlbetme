@@ -1,10 +1,4 @@
 ru:
-  # language: Русский
-  sitename: ГосКомЗаказ
-  # logo_title: Глава Республики Саха (Якутия)
-  # footer_info_html: Персональный сайт Главы Республики Саха (Якутия) <br/> Егора Афанасьевича Борисова
-  # siteinfo: Персональный сайт Главы Республики Саха (Якутия) Егора Афанасьевича Борисова
-
   common:
     search: Поиск
     back: Назад
@@ -30,120 +24,9 @@ ru:
     corrected: Запись исправлена!
     error: Ошибка!
 
-  feedback:
-    confirm_subject: '[Глава] Интернет-применая'
-    reply_subject: '[Глава] Ответ на ваш вопрос'
-    success_message: 'Сообщение успешно отправлено, спасибо!'
-    reply_success_message: 'Ответ успешно отправлен!'
-    failure_message: 'Сообщение не было отправлено!'
-
-  datetime:
-    today: Сегодня
-    yesterday: Вчера
-
-  # recaptcha:
-  #   errors:
-  #     incorrect-captcha-sol: "Код с картинки введен неверно"
-  #     verification_failed: Каптча введена неверно
-  #     recaptcha_unreachable: Нет связи с сервером каптчи
-
-  # date:
-  #   formats:
-  #     default: "%d.%m.%Y"
   time:
     formats:
       input: "%d.%m.%Y %H:%M"
 
-  criterions:
-    kind:
-      integer_less: меньше
-      integer_greater: больше
-      date_before: до
-      date_after: после
-
   messages:
     user_not_authorized: 'Доступ запрещен!'
-
-  mailboxer:
-    message_mailer:
-      subject_new: "Новое сообщение: %{subject}"
-      subject_reply: "Новый ответ: %{subject}"
-    notification_mailer:
-      subject: "Новое уведомление: %{subject}"
-
-  orders:
-    kind:
-      tender: Конкурс
-      classic_auction: Аукцион
-    status:
-      draft: Черновик
-      published: Опубликована
-      timeisup: Прием заявок окончен
-      failed: Несостоялась
-      completed: Завершена
-      canceled: Отменена
-      corrected: Исправлена
-      auction: Идет аукцион
-    operations:
-      kind:
-        creation: создание
-        publish: публикация
-        timeisup: время вышло
-        complete: окончание
-        cancel: отмена
-        start_auction: начало аукциона
-        stop_auction: окончание аукциона
-        correct: исправление
-        fail: несостоялась
-        change_winner: отмена победителя
-
-  order_attachments:
-    kind:
-      proekt_kontrakta: Проект контракта
-      teh_zadanie: Техническое задание
-      other: Другое
-
-  offers:
-    status:
-      draft: Черновик
-      published: Опубликована
-      canceled: Отменена
-      revoked: Заказ отменен
-      accepted: Выйграла
-      rejected: Проиграла
-      corrected: Заказ исправлен
-    operations:
-      kind:
-        creation: создание
-        publish: публикация
-        cancel: отмена
-        revoke: отзыв
-        order_corrected: заказ исправлен
-        accept: выйграла
-        reject: проиграла
-        revert: смена победителя заказа
-
-
-  offer_attachments:
-    kind:
-      proekt_kontrakta: Проект контракта
-      komm_predlojenie: Коммерческое предложение
-      other: Другое
-
-  contract:
-    status:
-      draft: Проект
-      signed: Подписан
-
-  contract_attachments:
-    kind:
-      dogovor: Договор
-      teh_zadanie: Техническое задание
-      nakladnaya: Накладная
-      schet_faktyra: Счет-фактура
-      other: Другое
-
-  users:
-    company_type:
-      Customer: Заказчик
-      Contractor: Поставщик

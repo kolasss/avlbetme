@@ -76,4 +76,10 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.destroy
   end
 
+  test "should have bets" do
+    depp = users(:depp)
+    bet = bets(:finished)
+
+    assert depp.bets.include? bet
+  end
 end

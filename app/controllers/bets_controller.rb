@@ -1,16 +1,19 @@
 class BetsController < ApplicationController
   before_action :set_bet, except: [ :new, :create ]
+  before_action :require_login, except: [:show]
 
   def show
   end
 
   def new
     @bet = Bet.new
+    authorize @bet
   end
 
   def create
     Bet.transaction do
       @bet = Bet.new(bet_params)
+      authorize @bet
       if @bet.save
         @bet.create_default_stake_for_user current_user.id
         flash[:info] = "Пари создано."
@@ -59,6 +62,7 @@ class BetsController < ApplicationController
   private
     def set_bet
       @bet = Bet.find(params[:id])
+      authorize @bet
     end
 
     def bet_params

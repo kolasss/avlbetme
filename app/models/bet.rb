@@ -25,6 +25,10 @@ class Bet < ActiveRecord::Base
   has_many :users, through: :stakes
 
   # scope :loss, -> (id) { where customer_id: id }
+  # scope :old, ->{ where(status: [
+  #   Bet.statuses[:finished],
+  #   Bet.statuses[:canceled]
+  # ]) }
 
   # для создания дефолтной ставки
   def create_default_stake_for_user user_id
@@ -61,5 +65,9 @@ class Bet < ActiveRecord::Base
     stakes.each do |stake|
       stake.pass!
     end
+  end
+
+  def has_user? user
+    users.include? user
   end
 end

@@ -10,6 +10,7 @@
 #  remember_me_token            :character varyin
 #  remember_me_token_expires_at :timestamp withou
 #  friends                      :jsonb            default({}), not null
+#  role                         :integer          default(0), not null
 #
 # Indexes
 #
@@ -39,6 +40,10 @@ class UserTest < ActiveSupport::TestCase
   test "name should be present" do
     @user.name = "     "
     assert_not @user.valid?
+  end
+
+  test "role should be guest" do
+    assert @user.guest?
   end
 
   test "should have authentication" do

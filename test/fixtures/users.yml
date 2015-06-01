@@ -10,6 +10,7 @@
 #  remember_me_token            :character varyin
 #  remember_me_token_expires_at :timestamp withou
 #  friends                      :jsonb            default({}), not null
+#  role                         :integer          default(0), not null
 #
 # Indexes
 #

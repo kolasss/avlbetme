@@ -27,6 +27,11 @@
         = render @user.bets.finished
 
     .panel
+      h2 Отмененные пари
+      ul.bets
+        = render @user.bets.canceled
+
+    .panel
       h2 Выйгранные ставки
 
       ul.stakes

@@ -3,14 +3,17 @@ class StakeTypesController < ApplicationController
 
   def index
     @stake_types = StakeType.all
+    authorize @stake_types
   end
 
   def new
     @stake_type = StakeType.new
+    authorize @stake_type
   end
 
   def create
     @stake_type = StakeType.new(stake_type_params)
+    authorize @stake_type
     if @stake_type.save
       flash[:info] = "Тип ставки создан."
       redirect_to stake_types_path
@@ -43,6 +46,7 @@ class StakeTypesController < ApplicationController
   private
     def set_stake_type
       @stake_type = StakeType.find(params[:id])
+      authorize @stake_type
     end
 
     def stake_type_params

@@ -10,6 +10,7 @@
 #  remember_me_token            :character varyin
 #  remember_me_token_expires_at :timestamp withou
 #  friends                      :jsonb            default({}), not null
+#  role                         :integer          default(0), not null
 #
 # Indexes
 #
@@ -23,6 +24,11 @@ class User < ActiveRecord::Base
   # authenticates_with_sorcery! do |config|
   #   config.authentications_class = Authentication
   # end
+
+  enum role: {
+    guest: 0,
+    admin: 1
+  }
 
   validates :name, :presence => true
 

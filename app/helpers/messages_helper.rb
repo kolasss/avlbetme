@@ -4,7 +4,7 @@ module MessagesHelper
   end
 
   def message type, msg
-    return if type == 'timedout'
+    # return if type == 'timedout'
 
     # msg = safe_join([ icon_close(:alert), msg ])
 
@@ -17,8 +17,8 @@ module MessagesHelper
     when 'notice'  then 'alert-success'
     when 'warning' then 'alert-warning'
     when 'alert'   then 'alert-danger'
-    when 'danger'  then 'alert-danger'
-    when 'recaptcha_error'  then 'alert-danger'
+    # when 'danger'  then 'alert-danger'
+    # when 'recaptcha_error'  then 'alert-danger'
     else 'alert-info'
     end
   end

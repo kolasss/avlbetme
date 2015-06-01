@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
   # end
 
   def destroy
+    skip_authorization
     logout
     flash[:success] = 'See you!'
     redirect_to root_path

@@ -21,6 +21,7 @@ class StakesController < ApplicationController
   end
 
   def update
+    authorize @stake.bet, :edit?
     if @stake.update_attributes(stake_params)
       flash[:info] = "Ставка обновлена."
       redirect_to @stake.bet
@@ -30,6 +31,7 @@ class StakesController < ApplicationController
   end
 
   def destroy
+    authorize @stake.bet, :edit?
     @stake.destroy
     # redirect_to @stake.bet
     redirect_to :back, notice: t('admin.deleted')
@@ -42,6 +44,7 @@ class StakesController < ApplicationController
 
     def set_bet
       @bet = Bet.find(params[:bet_id])
+      authorize @bet, :edit?
     end
 
     def stake_params

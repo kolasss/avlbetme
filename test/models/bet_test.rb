@@ -89,7 +89,30 @@ class BetTest < ActiveSupport::TestCase
     opened_bet = bets(:opened)
 
     assert_raise(ArgumentError) { opened_bet.finish! }
+
     assert_not opened_bet.finish! []
     assert opened_bet.opened?
+    assert opened_bet.errors[:finish].any?
+    opened_bet.stakes.each do |stake|
+      assert stake.pass?
+    end
+  end
+
+  test "method cancel! should correctly cancel bet" do
+    opened_bet = bets(:opened)
+    opened_bet.cancel!
+
+    assert opened_bet.canceled?
+    opened_bet.stakes.each do |stake|
+      assert stake.pass?
+    end
+
+    finished_bet = bets(:finished)
+    finished_bet.cancel!
+
+    assert finished_bet.canceled?
+    finished_bet.stakes.each do |stake|
+      assert stake.pass?
+    end
   end
 end

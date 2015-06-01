@@ -9,6 +9,7 @@ p = @bet.status
 p = link_to 'Изменить', edit_bet_path(@bet), class: 'btn btn-info'
 p = link_to 'Удалить', @bet, class: 'btn btn-danger', method: :delete, data: { confirm: "You sure?" }
 p = link_to 'Завершить', stop_bet_path(@bet), class: 'btn btn-primary'
+p = link_to 'Отменить', cancel_bet_path(@bet), class: 'btn btn-warning'
 
 hr
 

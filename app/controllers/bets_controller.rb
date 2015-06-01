@@ -38,6 +38,7 @@ class BetsController < ApplicationController
     redirect_to root_path, notice: t('admin.deleted')
   end
 
+  # для выбора выйгравшего
   def stop
   end
 
@@ -48,6 +49,11 @@ class BetsController < ApplicationController
       redirect_to stop_bet_path(@bet),
         alert: @bet.errors.messages[:finish].join(', ')
     end
+  end
+
+  def cancel
+    @bet.cancel!
+    redirect_to @bet, notice: 'Пари отменено'
   end
 
   private

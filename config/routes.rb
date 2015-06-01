@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :bets, except: [:index] do
     get :stop, on: :member
     post :finish, on: :member
+    get :cancel, on: :member
     resources :stakes, except: [:index, :show]
   end
 

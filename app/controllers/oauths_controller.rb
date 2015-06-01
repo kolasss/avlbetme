@@ -19,17 +19,18 @@ class OauthsController < ApplicationController
         auto_login(@user, true)
         redirect_successful_auth provider
       rescue
-        redirect_to root_path, :alert => "Failed to login from #{provider.titleize}!"
+        redirect_to root_path, alert: t('user.messages.cant_login', provider: provider.titleize )
       end
     end
   end
 
   private
+
     def auth_params
       params.permit(:code, :provider)
     end
 
     def redirect_successful_auth provider
-      redirect_back_or_to root_path, :notice => "Logged in from #{provider.titleize}!"
+      redirect_back_or_to user_path(current_user), notice: t('user.messages.logged_in', provider: provider.titleize )
     end
 end

@@ -15,10 +15,10 @@ class StakeTypesController < ApplicationController
     @stake_type = StakeType.new(stake_type_params)
     authorize @stake_type
     if @stake_type.save
-      flash[:info] = "Тип ставки создан."
+      flash[:info] = t('messages.created')
       redirect_to stake_types_path
     else
-      render 'new', alert: t(:create_failed)
+      render 'new', alert: t('messages.cant_create')
     end
   end
 
@@ -27,23 +27,24 @@ class StakeTypesController < ApplicationController
 
   def update
     if @stake_type.update_attributes(stake_type_params)
-      flash[:info] = "Тип ставки обновлен."
+      flash[:info] = t('messages.updated')
       redirect_to stake_types_path
     else
-      render :edit, alert: t(:update_failed)
+      render :edit, alert: t('messages.cant_update')
     end
   end
 
   def destroy
     if @stake_type.destroy
-      flash[:notice] = "Тип ставки удален."
+      flash[:notice] = t('messages.deleted')
     else
-      flash[:alert] = "Error deleting"
+      flash[:alert] = t('messages.cant_delete')
     end
     redirect_to stake_types_path
   end
 
   private
+
     def set_stake_type
       @stake_type = StakeType.find(params[:id])
       authorize @stake_type

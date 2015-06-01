@@ -40,4 +40,8 @@ class Stake < ActiveRecord::Base
   def user_name
     user.name
   end
+
+  def not_last?
+    bet.stakes.length > 1
+  end
 end

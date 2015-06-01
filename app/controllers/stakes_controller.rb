@@ -10,10 +10,10 @@ class StakesController < ApplicationController
     @stake = @bet.stakes.new(stake_params)
     p @stake
     if @stake.save
-      flash[:info] = "Ставка создана."
+      flash[:info] = t('messages.created')
       redirect_to @bet
     else
-      render 'new', alert: t(:create_failed)
+      render 'new', alert: t('messages.cant_create')
     end
   end
 
@@ -23,21 +23,25 @@ class StakesController < ApplicationController
   def update
     authorize @stake.bet, :edit?
     if @stake.update_attributes(stake_params)
-      flash[:info] = "Ставка обновлена."
+      flash[:info] = t('messages.updated')
       redirect_to @stake.bet
     else
-      render :edit, alert: t(:update_failed)
+      render :edit, alert: t('messages.cant_update')
     end
   end
 
   def destroy
     authorize @stake.bet, :edit?
-    @stake.destroy
-    # redirect_to @stake.bet
-    redirect_to :back, notice: t('admin.deleted')
+    if @stake.not_last? && @stake.destroy
+      flash[:notice] = t('messages.deleted')
+    else
+      flash[:alert] = t('messages.cant_delete')
+    end
+    redirect_to @stake.bet
   end
 
   private
+
     def set_stake
       @stake = Stake.find(params[:id])
     end

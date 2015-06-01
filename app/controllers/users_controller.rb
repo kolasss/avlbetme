@@ -16,14 +16,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     authorize @user
     if @user.destroy
-      flash[:notice] = "User deleted"
+      flash[:notice] = t('messages.deleted')
     else
-      flash[:alert] = "Error deleting"
+      flash[:alert] = t('messages.cant_delete')
     end
     redirect_to users_path
   end
 
   # магия, не использовать вне Хогвартса!!!
+  # TODO: чето сделать другое?
   def krytoi
     skip_authorization
     current_user.admin!

@@ -11,10 +11,12 @@ class ApplicationController < ActionController::Base
   private
 
     def user_not_authorized
-      flash[:alert] = "Доступ запрещен."
+      flash[:alert] = t('messages.user_not_authorized')
       redirect_to(request.referrer || root_path)
     end
 
+    # залогинить незалогиненного пользователя
+    # TODO: как логинить через ФБ?
     def not_authenticated
       redirect_to auth_at_provider_path(:provider => :vk)
     end

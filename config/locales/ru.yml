@@ -8,25 +8,29 @@ ru:
     delete: Удалить
     confirm_deletion: Вы действительно хотите удалить запись?
     cancel: Отмена
-    published: Опубликовано
-    not_published: Не опубликовано
-    turn_on: Вкл
-    turn_off: Выкл
 
-  admin:
+  messages:
     created: Запись создана
     updated: Запись обновлена
     deleted: Запись удалена
     cant_delete: Запись не может быть удалена
-    published: Запись опубликована
-    unpublished: Запись снята с публикации
     cant_do: Нельзя!
-    corrected: Запись исправлена!
     error: Ошибка!
+    user_not_authorized: Доступ запрещен!
+    cant_create: Ошибка при создании записи
+
+  bet:
+    messages:
+      finished: Завершено
+      canceled: Отменено
+      add_winner: Выберите победителя!
+
+  user:
+    messages:
+      logged_in: "Зашел через %{provider}!"
+      cant_login: "Ошибка авторизации через %{provider}!"
+      logged_out: "Заходите еще!"
 
   time:
     formats:
       input: "%d.%m.%Y %H:%M"
-
-  messages:
-    user_not_authorized: 'Доступ запрещен!'

@@ -22,6 +22,7 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+# не добавлять ставок в finished bet, либо поменять тест stake test "method not_last?..."
 one_depp:
   objective: чтото сделать
   bid: 1000

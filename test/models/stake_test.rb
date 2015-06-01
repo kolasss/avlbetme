@@ -68,4 +68,15 @@ class StakeTest < ActiveSupport::TestCase
   test "method user_name should return correct value" do
     assert_equal @stake.user_name, @stake.user.name
   end
+
+  test "method not_last? should return correct value" do
+    one_depp = stakes(:one_depp)
+    one_pit = stakes(:one_pit)
+
+    assert one_depp.not_last?
+
+    one_pit.destroy
+    one_depp.reload
+    assert_not one_depp.not_last?
+  end
 end

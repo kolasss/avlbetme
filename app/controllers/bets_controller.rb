@@ -16,10 +16,10 @@ class BetsController < ApplicationController
       authorize @bet
       if @bet.save
         @bet.create_default_stake_for_user current_user.id
-        flash[:info] = "Пари создано."
+        flash[:info] = t('messages.created')
         redirect_to @bet
       else
-        render 'new', alert: t(:create_failed)
+        render 'new', alert: t('messages.cant_create')
       end
     end
   end
@@ -29,16 +29,16 @@ class BetsController < ApplicationController
 
   def update
     if @bet.update_attributes(bet_params)
-      flash[:info] = "Пари обновлено."
+      flash[:info] = t('messages.updated')
       redirect_to @bet
     else
-      render :edit, alert: t(:update_failed)
+      render :edit, alert: t('messages.cant_update')
     end
   end
 
   def destroy
     @bet.destroy
-    redirect_to root_path, notice: t('admin.deleted')
+    redirect_to root_path, notice: t('messages.deleted')
   end
 
   # для выбора выйгравшего
@@ -47,7 +47,7 @@ class BetsController < ApplicationController
 
   def finish
     if @bet.finish! win_ids, pass_ids
-      redirect_to @bet, notice: 'Пари завершено'
+      redirect_to @bet, notice: t('bet.messages.finished')
     else
       redirect_to stop_bet_path(@bet),
         alert: @bet.errors.messages[:finish].join(', ')
@@ -56,10 +56,11 @@ class BetsController < ApplicationController
 
   def cancel
     @bet.cancel!
-    redirect_to @bet, notice: 'Пари отменено'
+    redirect_to @bet, notice: t('bet.messages.canceled')
   end
 
   private
+
     def set_bet
       @bet = Bet.find(params[:id])
       authorize @bet

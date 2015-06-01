@@ -115,4 +115,13 @@ class BetTest < ActiveSupport::TestCase
       assert stake.pass?
     end
   end
+
+  test "method has_user? should correctly determine whether the user in bet" do
+    depp = users(:depp)
+    jolie = users(:jolie)
+    bet = bets(:finished)
+
+    assert bet.has_user? depp
+    assert_not bet.has_user? jolie
+  end
 end

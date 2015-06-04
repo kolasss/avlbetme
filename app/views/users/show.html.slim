@@ -1,10 +1,7 @@
-- provide(:title, @user.name)
-
 .row
   aside.col-md-4
     section.user_info
-      h1
-        = @user.name
+      h1 = title @user.name
       = image_tag @user.photo
 
     section.user_friends

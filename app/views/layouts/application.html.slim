@@ -5,24 +5,12 @@ html lang='ru'
     = stylesheet_link_tag :application, media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
     = javascript_include_tag :application, 'data-turbolinks-track' => true
-  body
-    header.navbar.navbar-inverse
-      ul.nav.navbar-nav(role="navigation")
-        li = link_to 'AvlBet.me', root_path
-        li = link_to 'Пользователи', users_path
-        li = link_to 'Типы ставок', stake_types_path
-        li = link_to 'Новое пари', new_bet_path
-
-        - if logged_in?
-          li = link_to current_user.name, current_user
-          li = link_to 'Выйти', log_out_path, method: :delete
-        - else
-          li = link_to 'Зайти через ВК', auth_at_provider_path(:provider => :vk)
-          / li = link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook)
-
-
-    .container
+  body.site-body
+    = render 'layouts/header'
+    .container.site-content
       - unless flash.empty?
         .page-messages
           = messages
       == yield
+
+    = render 'layouts/footer'

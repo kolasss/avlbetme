@@ -6,7 +6,7 @@ module MessagesHelper
   def message type, msg
     # return if type == 'timedout'
 
-    # msg = safe_join([ icon_close(:alert), msg ])
+    msg = safe_join([ icon_close(:alert), msg ])
 
     content_tag :div, msg, class: "alert fade in #{message_class type}"
   end

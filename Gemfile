@@ -17,12 +17,14 @@ gem 'bootstrap-sass'
 gem "autoprefixer-rails" #auto web prefixes for css
 gem 'annotate'
 gem "slim-rails"
+gem "font-awesome-rails"
 
 gem "sorcery"
 gem 'pundit'
 
 gem 'simple_form'
 gem 'rails-i18n' #переводы
+gem 'kaminari' #pagination
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

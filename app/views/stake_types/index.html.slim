@@ -1,17 +1,16 @@
-h1 Типы ставок
+h1 = title 'Типы ставок'
 
 table.table.stake_types
   thead
     tr
-      th title
-      th numeric
-      th colspan=2
+      th Наименование
+      th Цифровой?
+      th
   tbody
     - @stake_types.each do |type|
       tr
-        td = type.title
-        td = type.numeric
-        td = link_to 'Изменить', edit_stake_type_path(type), class: 'btn btn-info'
-        td = link_to 'Удалить', stake_type_path(type), class: 'btn btn-danger', method: :delete, data: { confirm: "You sure?" }
+        td = link_to type.title, edit_stake_type_path(type)
+        td = boolean_icon type.numeric
+        td = remove_link stake_type_path(type)
 
 p = link_to 'Новый тип', new_stake_type_path, class: 'btn btn-primary'

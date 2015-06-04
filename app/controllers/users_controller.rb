@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, except: [ :index, :krytoi ]
 
   def index
-    @users = User.all
+    @users = User.all.page params[:page]
     authorize @users
   end
 

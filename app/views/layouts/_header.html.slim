@@ -1,0 +1,23 @@
+header.navbar.navbar-default.navbar-static-top(role="banner")
+  .container
+    .navbar-header
+      button.navbar-toggle.collapsed type="button" data-toggle="collapse" data-target="#mainav"
+        span.sr-only Toggle navigation
+        = fa_icon 'bars'
+      a.navbar-brand href=root_path AvlBet.me
+
+    #mainav.collapse.navbar-collapse
+      ul.nav.navbar-nav(role="navigation")
+        - if logged_in?
+          li = link_to fa_icon('plus-square', text: 'Новое пари'), new_bet_path
+          - if current_user.admin?
+            li = link_to fa_icon('users', text: 'Пользователи'), users_path
+            li = link_to fa_icon('list-alt', text: 'Типы ставок'), stake_types_path
+
+      ul.nav.navbar-nav.navbar-right
+        - if logged_in?
+          li = link_to fa_icon('user', text: current_user.name), current_user
+          li = link_to fa_icon('sign-out', text: 'Выйти'), log_out_path, method: :delete
+        - else
+          li = link_to fa_icon('vk', text: 'Зайти через ВК'), auth_at_provider_path(:provider => :vk)
+          / li = link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook)

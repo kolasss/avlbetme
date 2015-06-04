@@ -24,8 +24,8 @@ class Bet < ActiveRecord::Base
   has_many :stakes, :dependent => :destroy
   has_many :users, through: :stakes
 
-  # scope :loss, -> (id) { where customer_id: id }
-  # scope :old, ->{ where(status: [
+  scope :by_created, -> { order(created_at: :desc) }
+  # scope :old, -> { where(status: [
   #   Bet.statuses[:finished],
   #   Bet.statuses[:canceled]
   # ]) }

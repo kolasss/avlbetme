@@ -6,10 +6,10 @@ ru:
     edit: Править
     save: Сохранить
     delete: Удалить
-    confirm_deletion: Вы действительно хотите удалить запись?
     cancel: Отмена
 
   messages:
+    confirm_deletion: Вы действительно хотите удалить запись?
     created: Запись создана
     updated: Запись обновлена
     deleted: Запись удалена

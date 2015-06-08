@@ -2,11 +2,14 @@
 
   = f.input :title
   = f.input :body
-  = f.input :started_at
-  = f.input :stopped_at
-  / = f.input :status, as: :select, collection: Bet.statuses.keys
+
+  .form-group.datetime.optional.bet_started_at
+    label.datetime.optional.control-label for="bet_started_at" Дата начала
+    = datetime_local_field :bet, :started_at, class: 'datetime optional form-control'
+
+  .form-group.datetime.optional.bet_stopped_at
+    label.datetime.optional.control-label for="bet_stopped_at" Дата конца
+    = datetime_local_field :bet, :stopped_at, class: 'datetime optional form-control'
+
   hr
   = f.button :submit
-
-
-  / = render 'attachments', f: f

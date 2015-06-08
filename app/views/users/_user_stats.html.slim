@@ -1,0 +1,26 @@
+.panel.panel-default
+  .panel-heading Статистика
+  / .panel-body
+  table.table
+    thead
+      tr
+        th
+        th Выиграно
+        th Проиграно
+        th Сумма
+    tbody
+      - @numeric_types.each do |type|
+        tr
+          td = type.title
+          td = number_with_precision(@user_stats[:win][type.title],
+            precision: 2,
+            strip_insignificant_zeros: true,
+            delimiter: ' ')
+          td = number_with_precision(@user_stats[:lose][type.title],
+            precision: 2,
+            strip_insignificant_zeros: true,
+            delimiter: ' ')
+          td = number_with_precision(@user_stats[:sum][type.title],
+            precision: 2,
+            strip_insignificant_zeros: true,
+            delimiter: ' ')

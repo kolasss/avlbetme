@@ -1,0 +1,17 @@
+.panel.panel-default
+  .panel-heading Ставки
+  .panel-body
+    .user-stakes role="tabpanel"
+      ul.nav.nav-tabs.nav-justified role="tablist"
+        li.active role="presentation"
+          a href="#win-stakes" aria-controls="win-stakes" role="tab" data-toggle="tab" Выигранные
+        li role="presentation"
+          a href="#lose-stakes" aria-controls="lose-stakes" role="tab" data-toggle="tab" Проигранные
+
+      .tab-content
+        #win-stakes.tab-pane.active role="tabpanel"
+          ul.stakes
+            = render @user.stakes.win
+        #lose-stakes.tab-pane role="tabpanel"
+          ul.stakes
+            = render @user.stakes.lose

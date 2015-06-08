@@ -1,0 +1,22 @@
+.panel.panel-default
+  .panel-heading Пари
+  .panel-body
+    .user-bets role="tabpanel"
+      ul.nav.nav-tabs.nav-justified role="tablist"
+        li.active role="presentation"
+          a href="#opened-bets" aria-controls="opened-bets" role="tab" data-toggle="tab" Живые
+        li role="presentation"
+          a href="#finished-bets" aria-controls="finished-bets" role="tab" data-toggle="tab" Завершенные
+        li role="presentation"
+          a href="#canceled-bets" aria-controls="canceled-bets" role="tab" data-toggle="tab" Отмененные
+
+      .tab-content
+        #opened-bets.tab-pane.active role="tabpanel"
+          ul.bets
+            = render @user.bets.opened
+        #finished-bets.tab-pane role="tabpanel"
+          ul.bets
+            = render @user.bets.finished
+        #canceled-bets.tab-pane role="tabpanel"
+          ul.bets
+            = render @user.bets.canceled

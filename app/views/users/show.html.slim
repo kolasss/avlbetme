@@ -13,29 +13,6 @@
             = friend.name
           end
   .col-md-8
-    .panel
-      h2 Живые пари
-      ul.bets
-        = render @user.bets.opened
-
-    .panel
-      h2 Завершенные пари
-      ul.bets
-        = render @user.bets.finished
-
-    .panel
-      h2 Отмененные пари
-      ul.bets
-        = render @user.bets.canceled
-
-    .panel
-      h2 Выйгранные ставки
-
-      ul.stakes
-        = render @user.stakes.win
-
-    .panel
-      h2 Проигранные ставки
-
-      ul.stakes
-        = render @user.stakes.lose
+    = render 'user_bets'
+    = render 'user_stakes'
+    = render 'user_stats'

@@ -54,4 +54,8 @@ class User < ActiveRecord::Base
     vk_friends_ids = friends['vk_friends_ids']
     User.joins(:authentications).merge(Authentication.where provider: :vk, uid: vk_friends_ids)
   end
+
+  # def sum_won
+
+  # end
 end

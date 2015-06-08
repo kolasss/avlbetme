@@ -45,19 +45,8 @@ class Bet < ActiveRecord::Base
       errors.add(:finish, I18n.t('bet.messages.add_winner'))
       return false
     end
-
+    make_winners_and_losers win_ids, pass_ids
     finished!
-
-    stakes.where(id: win_ids).each do |stake|
-      stake.win!
-    end
-    stakes.where(id: pass_ids).each do |stake|
-      stake.pass!
-    end
-    lose_ids = win_ids + pass_ids
-    stakes.where.not(id: lose_ids).each do |stake|
-      stake.lose!
-    end
   end
 
   def cancel!
@@ -70,4 +59,19 @@ class Bet < ActiveRecord::Base
   def has_user? user
     users.include? user
   end
+
+  private
+
+    def make_winners_and_losers win_ids, pass_ids
+      stakes.where(id: win_ids).each do |stake|
+        stake.win!
+      end
+      stakes.where(id: pass_ids).each do |stake|
+        stake.pass!
+      end
+      not_lose_ids = win_ids + pass_ids
+      stakes.where.not(id: not_lose_ids).each do |stake|
+        stake.lose!
+      end
+    end
 end

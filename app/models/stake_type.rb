@@ -13,4 +13,6 @@ class StakeType < ActiveRecord::Base
   validates :title, :presence => true
 
   has_many :stakes, :dependent => :restrict_with_error
+
+  scope :numeric, -> { where(numeric: true) }
 end

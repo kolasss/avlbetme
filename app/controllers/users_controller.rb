@@ -10,6 +10,22 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     authorize @user
     @friends = @user.friends_list
+
+    @user_stats = {win: {}, lose: {}, sum: {}}
+    @numeric_types = StakeType.numeric
+    @numeric_types.each do |type|
+      @user_stats[:win][type.title] = @user.stakes
+        .win.where(stake_type: type)
+        .reduce(0) do |sum, stake|
+          sum += stake.bid.to_f
+        end
+      @user_stats[:lose][type.title] = @user.stakes
+        .lose.where(stake_type: type)
+        .reduce(0) do |sum, stake|
+          sum += stake.bid.to_f
+        end
+      @user_stats[:sum][type.title] = @user_stats[:win][type.title] - @user_stats[:lose][type.title]
+    end
   end
 
   def destroy

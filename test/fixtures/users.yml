@@ -33,3 +33,4 @@ jolie:
   photo: http://cs623631.vk.me/v623631476/1cbe5/jolie.jpg
   friends:
     vk_friends_ids: [2]
+  role: 1 #admin

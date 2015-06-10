@@ -9,6 +9,6 @@ module ApplicationHelper
   end
 
   def full_title
-    [ title, "AvlBet.Me" ].reject(&:blank?).join(' - ')
+    [ title, "AvlBet.Me" ].reject(&:blank?).join(' | ')
   end
 end

@@ -8,7 +8,6 @@ class StakesController < ApplicationController
 
   def create
     @stake = @bet.stakes.new(stake_params)
-    p @stake
     if @stake.save
       flash[:info] = t('messages.created')
       redirect_to @bet

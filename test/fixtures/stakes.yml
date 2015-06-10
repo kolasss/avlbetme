@@ -58,3 +58,16 @@ two_jolie:
   stake_type: other
   user: jolie
   bet: opened
+
+three_depp:
+  objective: чтото сделать asdqwe
+  bid: 1000
+  stake_type: rub
+  user: depp
+  bet: opened_for_controller_test
+four_depp:
+  objective: чтото сделать asdqasdawe
+  bid: 1200
+  stake_type: other
+  user: depp
+  bet: opened_for_controller_test

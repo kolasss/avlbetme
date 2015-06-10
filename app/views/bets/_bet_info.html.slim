@@ -1,0 +1,16 @@
+h1 = link_to @bet.title, @bet
+
+blockquote
+  p = @bet.body
+
+table.table.table-condensed
+  tbody
+    tr
+      th Дата начала
+      td = l @bet.started_at
+    tr
+      th Дата конца
+      td = l @bet.stopped_at
+    tr
+      th Статус
+      td = @bet.status

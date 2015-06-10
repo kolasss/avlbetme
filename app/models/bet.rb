@@ -40,12 +40,12 @@ class Bet < ActiveRecord::Base
     stakes.create! default_params
   end
 
-  def finish! win_ids, pass_ids=[]
-    if win_ids.empty?
+  def finish! results = {}
+    unless results.has_value? 'win'
       errors.add(:finish, I18n.t('bet.messages.add_winner'))
       return false
     end
-    make_winners_and_losers win_ids, pass_ids
+    finish_stakes results
     finished!
   end
 
@@ -62,16 +62,13 @@ class Bet < ActiveRecord::Base
 
   private
 
-    def make_winners_and_losers win_ids, pass_ids
-      stakes.where(id: win_ids).each do |stake|
-        stake.win!
-      end
-      stakes.where(id: pass_ids).each do |stake|
-        stake.pass!
-      end
-      not_lose_ids = win_ids + pass_ids
-      stakes.where.not(id: not_lose_ids).each do |stake|
-        stake.lose!
+    def finish_stakes results
+      stakes.each do |stake|
+        new_status = results[stake.id.to_s]
+        if new_status.present?
+          stake.status = new_status
+          stake.save
+        end
       end
     end
 end

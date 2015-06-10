@@ -1,27 +1,19 @@
-h1 = title @bet.title
+- title @bet.title
 
-p = @bet.body
+= render 'bet_info'
 
-p = @bet.started_at
-p = @bet.stopped_at
-p = @bet.status
-
-p = link_to 'Изменить', edit_bet_path(@bet), class: 'btn btn-info'
-p = link_to 'Удалить', @bet, class: 'btn btn-danger', method: :delete, data: { confirm: "You sure?" }
-p = link_to 'Завершить', stop_bet_path(@bet), class: 'btn btn-primary'
-p = link_to 'Отменить', cancel_bet_path(@bet), class: 'btn btn-warning'
+- if policy(@bet).edit?
+  .btn-group role="group"
+    = link_to fa_icon('pencil', text: 'Изменить'), edit_bet_path(@bet), class: 'btn btn-info'
+    = link_to fa_icon('trash-o', text: 'Удалить'), @bet, class: 'btn btn-danger', method: :delete, data: { confirm: t('messages.confirm_deletion') }
+    = link_to fa_icon('check-square-o', text: 'Завершить'), stop_bet_path(@bet), class: 'btn btn-primary'
+    = link_to fa_icon('times', text: 'Отменить'), cancel_bet_path(@bet), class: 'btn btn-warning'
 
 hr
 
-ol.bet-stakes
-  - @bet.stakes.each do |stake|
-    li
-      h2 = stake.user.name
-      p = stake.objective
-      p = stake.bid
-      p = stake.stake_type.title
-      p = stake.status
-      p = link_to 'Изменить', edit_bet_stake_path(@bet, stake), class: 'btn btn-info'
-      p = link_to 'Удалить', bet_stake_path(@bet, stake), class: 'btn btn-danger', method: :delete, data: { confirm: "You sure?" }
+.bet-stakes-list
+  - @stakes.each do |stake|
+    = render 'bet_stake', stake: stake
 
-p = link_to 'Новый участник', new_bet_stake_path(@bet), class: 'btn btn-primary'
+- if policy(@bet).edit?
+  = link_to fa_icon('user-plus', text: 'Новый участник'), new_bet_stake_path(@bet), class: 'btn btn-primary'

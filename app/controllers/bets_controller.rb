@@ -3,6 +3,7 @@ class BetsController < ApplicationController
   before_action :require_login, except: [:show]
 
   def show
+    @stakes = @bet.stakes
   end
 
   def new
@@ -43,10 +44,12 @@ class BetsController < ApplicationController
 
   # для выбора выйгравшего
   def stop
+    @stop = true
+    @stakes = @bet.stakes
   end
 
   def finish
-    if @bet.finish! win_ids, pass_ids
+    if @bet.finish! params[:results]
       redirect_to @bet, notice: t('bet.messages.finished')
     else
       redirect_to stop_bet_path(@bet),
@@ -74,13 +77,4 @@ class BetsController < ApplicationController
         :stopped_at
       )
     end
-
-    def win_ids
-      params[:results][:winners].reject(&:blank?)
-    end
-
-    def pass_ids
-      params[:results][:pass].reject(&:blank?)
-    end
-
 end

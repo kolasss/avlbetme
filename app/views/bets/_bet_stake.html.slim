@@ -1,0 +1,31 @@
+.panel.panel-default.bet-stake
+  .panel-heading
+    h3.panel-title
+      = stake.user.name
+    - if policy(@bet).edit? && !@stop
+      .control-buttons
+        = edit_link edit_bet_stake_path(@bet, stake)
+        = remove_link bet_stake_path(@bet, stake)
+  .panel-body
+    - if stake.user.photo.present?
+      = image_tag stake.user.photo, class: 'user-avatar'
+      .clearfix
+    - if stake.objective.present?
+      b Цель:
+      p = stake.objective
+    b Ставка:
+    p = stake.bid
+    p = stake.stake_type.title
+
+    b Статус:
+    - if policy(@bet).edit? && @stop
+      .radiobuttons
+        = form.input(stake.id,
+          collection: Stake.statuses,
+          as: :radio_buttons,
+          value_method: :first,
+          checked: stake.status,
+          label: false)
+    - else
+      p = stake.status
+

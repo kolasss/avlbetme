@@ -26,7 +26,7 @@ module IconsHelper
     }
     options.deep_merge! defaults
     link_to href, options do
-      fa_icon 'ban lg'
+      fa_icon 'trash-o lg'
     end
   end
 

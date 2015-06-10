@@ -1,35 +1,12 @@
 - title "Завершение пари"
 
-h1 = @bet.title
-
-p = @bet.body
-
-p = @bet.started_at
-p = @bet.stopped_at
-p = @bet.status
+= render 'bet_info'
 
 hr
-
-ol.bet-stakes
-  - @bet.stakes.each do |stake|
-    li
-      h2 = stake.user.name
-      p = stake.objective
-      p = stake.bid
-      p = stake.stake_type.title
-      p = stake.status
-
-hr
-
 
 = simple_form_for :results, url: finish_bet_path(@bet) do |f|
+  .bet-stakes-list
+    - @stakes.each do |stake|
+      = render 'bet_stake', stake: stake, form: f
 
-  h3 Выберите победителей
-  = f.collection_check_boxes :winners, @bet.stakes, :id, :user_name
-  hr
-
-  h3 Выберите в случае ничьей, нулевого результата
-  = f.collection_check_boxes :pass, @bet.stakes, :id, :user_name
-  hr
-
-  = f.button :submit
+  = f.button :submit, 'Завершить', class: 'btn btn-primary'

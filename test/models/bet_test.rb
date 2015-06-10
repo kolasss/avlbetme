@@ -74,7 +74,13 @@ class BetTest < ActiveSupport::TestCase
     losers_stake = opened_bet.stakes.second
     pass_stake = opened_bet.stakes.third
 
-    opened_bet.finish! [winners_stake.id], [pass_stake.id]
+    results = {
+      winners_stake.id.to_s => 'win',
+      losers_stake.id.to_s => 'lose',
+      pass_stake.id.to_s => 'pass'
+    }
+
+    opened_bet.finish! results
 
     winners_stake.reload
     losers_stake.reload
@@ -88,9 +94,7 @@ class BetTest < ActiveSupport::TestCase
   test "method finish! should require winners id" do
     opened_bet = bets(:opened)
 
-    assert_raise(ArgumentError) { opened_bet.finish! }
-
-    assert_not opened_bet.finish! []
+    assert_not opened_bet.finish! {"asd"}
     assert opened_bet.opened?
     assert opened_bet.errors[:finish].any?
     opened_bet.stakes.each do |stake|

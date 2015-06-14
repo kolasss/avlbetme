@@ -3,7 +3,7 @@ module MessagesHelper
     safe_join flash.map { |type, msg| message(type, msg) }
   end
 
-  def message type, msg
+  def message type, msg=""
     # return if type == 'timedout'
 
     msg = safe_join([ icon_close(:alert), msg ])

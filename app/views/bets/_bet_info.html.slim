@@ -7,10 +7,10 @@ table.table.table-condensed
   tbody
     tr
       th Дата начала
-      td = l @bet.started_at
+      td = l @bet.started_at if @bet.started_at.present?
     tr
       th Дата конца
-      td = l @bet.stopped_at
+      td = l @bet.stopped_at if @bet.stopped_at.present?
     tr
       th Статус
       td = @bet.status

@@ -71,6 +71,17 @@ class UserTest < ActiveSupport::TestCase
 
     assert depp.friends_list.include?(pit)
     assert_not depp.friends_list.include?(jolie)
+    assert_not depp.friends_list.include?(depp)
+  end
+
+  test "method friends_list_with_self should return right users" do
+    depp = users(:depp)
+    pit = users(:pit)
+    jolie = users(:jolie)
+
+    assert depp.friends_list_with_self.include?(pit)
+    assert depp.friends_list_with_self.include?(depp)
+    assert_not depp.friends_list_with_self.include?(jolie)
   end
 
   test "should not allow destroy with exist stake" do

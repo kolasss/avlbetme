@@ -1,6 +1,6 @@
 = simple_form_for [@bet, @stake] do |f|
 
-  = f.association :user
+  = f.association :user, collection: @friends
   = f.input :objective
   = f.association :stake_type
   = f.input :bid

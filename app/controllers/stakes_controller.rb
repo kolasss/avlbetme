@@ -4,6 +4,7 @@ class StakesController < ApplicationController
 
   def new
     @stake = @bet.stakes.new
+    @friends = current_user.friends_list_with_self
   end
 
   def create
@@ -17,6 +18,7 @@ class StakesController < ApplicationController
   end
 
   def edit
+    @friends = current_user.friends_list_with_self
   end
 
   def update

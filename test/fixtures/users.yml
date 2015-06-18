@@ -22,15 +22,15 @@ depp:
   name: Johny Depp
   photo: http://cs623631.vk.me/v623631476/1cbe5/depp.jpg
   friends:
-    vk_friends_ids: [2]
+    vk_friends_ids: [12] #uid from authentications
 pit:
   name: Brad Pit
   photo: http://cs623631.vk.me/v623631476/1cbe5/pit.jpg
   friends:
-    vk_friends_ids: [1, 3]
+    vk_friends_ids: [11, 13]
 jolie:
   name: Angelina Jolie
   photo: http://cs623631.vk.me/v623631476/1cbe5/jolie.jpg
   friends:
-    vk_friends_ids: [2]
+    vk_friends_ids: [12]
   role: 1 #admin

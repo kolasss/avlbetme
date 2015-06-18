@@ -14,15 +14,15 @@
 #  index_authentications_on_provider_and_uid  (provider,uid)
 #
 
-one:
+depp:
   provider: vk
-  uid: 1
+  uid: 11
   user: depp
-two:
+pit:
   provider: vk
-  uid: 2
+  uid: 12
   user: pit
-three:
+jolie:
   provider: vk
-  uid: 3
+  uid: 13
   user: jolie

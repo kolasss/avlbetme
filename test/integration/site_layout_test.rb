@@ -21,11 +21,4 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     user_session.assert_select "a[href=?]", log_out_path
 
   end
-
-  # test "Sign up page" do
-  #   get signup_path
-  #   assert_template 'users/new'
-  #   assert_select "title", full_title("Sign up")
-  # end
-
 end

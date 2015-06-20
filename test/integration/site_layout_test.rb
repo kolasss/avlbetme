@@ -11,7 +11,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   end
 
   test "layout links for user" do
-    user_session = login(:depp)
+    user_session = login_session(:depp)
 
     user_session.get root_path
     user_session.assert_template 'home/index'

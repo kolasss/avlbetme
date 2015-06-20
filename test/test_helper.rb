@@ -23,6 +23,7 @@ end
 class ActionDispatch::IntegrationTest
 
   private
+
     def stub_oauth_vk
       stub_request(:post, "https://oauth.vk.com/access_token").
         with(:body => {
@@ -46,7 +47,7 @@ class ActionDispatch::IntegrationTest
           })
     end
 
-    def login user_name
+    def login_session user_name
       stub_oauth_vk
       open_session do |sess|
         u = users(user_name)

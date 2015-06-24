@@ -4,7 +4,7 @@ class StakesController < ApplicationController
 
   def new
     @stake = @bet.stakes.new
-    @friends = current_user.friends_list_with_self
+    load_friends
   end
 
   def create
@@ -13,6 +13,7 @@ class StakesController < ApplicationController
       flash[:info] = t('messages.created')
       redirect_to @bet
     else
+      load_friends
       render 'new', alert: t('messages.cant_create')
     end
   end
@@ -27,6 +28,7 @@ class StakesController < ApplicationController
       flash[:info] = t('messages.updated')
       redirect_to @stake.bet
     else
+      load_friends
       render :edit, alert: t('messages.cant_update')
     end
   end
@@ -59,5 +61,9 @@ class StakesController < ApplicationController
         :user_id,
         :stake_type_id
       )
+    end
+
+    def load_friends
+      @friends = current_user.friends_list_with_self
     end
 end

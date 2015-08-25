@@ -7,6 +7,10 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_template 'home/index'
     assert_select "a[href=?]", root_path
     assert_select "a[href=?]", auth_at_provider_path(:provider => :vk)
+    assert_select "a[href=?]", new_bet_path, false
+    assert_select "a[href=?]", log_out_path, false
+    assert_select "a[href=?]", users_path, false
+    assert_select "a[href=?]", stake_types_path, false
   end
 
   test "layout links for user" do

@@ -19,6 +19,20 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     user_session.assert_select "a[href=?]", new_bet_path
     user_session.assert_select "a[href=?]", user_path(user_session.controller.current_user)
     user_session.assert_select "a[href=?]", log_out_path
+    user_session.assert_select "a[href=?]", users_path, false
+    user_session.assert_select "a[href=?]", stake_types_path, false
+  end
 
+  test "layout links for admin" do
+    user_session = login_session(:jolie)
+
+    user_session.get root_path
+    user_session.assert_template 'home/index'
+    user_session.assert_select "a[href=?]", root_path
+    user_session.assert_select "a[href=?]", new_bet_path
+    user_session.assert_select "a[href=?]", user_path(user_session.controller.current_user)
+    user_session.assert_select "a[href=?]", log_out_path
+    user_session.assert_select "a[href=?]", users_path
+    user_session.assert_select "a[href=?]", stake_types_path
   end
 end

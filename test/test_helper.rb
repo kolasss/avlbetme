@@ -25,6 +25,7 @@ class ActionDispatch::IntegrationTest
   private
 
     def stub_oauth_vk
+      # stub request to vk.com for user depp
       stub_request(:post, "https://oauth.vk.com/access_token").
         with(:body => {
           client_id: "4927976",
@@ -32,19 +33,45 @@ class ActionDispatch::IntegrationTest
           code: "depp",
           grant_type: "authorization_code",
           redirect_uri: "http://localhost:3000/oauth/callback?provider=vk"
-        }).to_return(:status => 200,
+        }).to_return(
+          :status => 200,
           :body => '{"access_token":"depp_token","expires_in":86399,"user_id":11}',
+          :headers => {
+            'Content-Type' => 'application/json'
+          }
+        )
+      # response for depp auth
+      stub_request(:get, "https://api.vk.com/method/getProfiles?access_token=depp_token&fields=full_name,photo_100&scope=friends&uids=11").
+        to_return(:status => 200,
+          :body => '{"response":[{"uid":"11","full_name":"Джони Депп", "photo_100":"http:\/\/cs109.vkontakte.ru\/u00001\/c_df2abf56.jpg"}]}',
           :headers => {
             'Content-Type' => 'application/json'
           })
 
-      stub_request(:get, "https://api.vk.com/method/getProfiles?access_token=depp_token&fields=full_name,photo_100&scope=friends&uids=11").
-        with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Authorization'=>'Bearer depp_token', 'User-Agent'=>'Faraday v0.9.1'}).
+      # stub request to vk.com for user jolie
+      stub_request(:post, "https://oauth.vk.com/access_token").
+        with(:body => {
+          "client_id"=>"4927976",
+          "client_secret"=>"fgIlsrt0B4Cp9Hdk3rqY",
+          "code"=>"jolie",
+          "grant_type"=>"authorization_code",
+          "redirect_uri"=>"http://localhost:3000/oauth/callback?provider=vk"
+        }).to_return(
+          :status => 200,
+          :body => '{"access_token":"jolie_token","expires_in":86399,"user_id":13}',
+          :headers => {
+            'Content-Type' => 'application/json'
+          }
+        )
+
+      # response for jolie
+      stub_request(:get, "https://api.vk.com/method/getProfiles?access_token=jolie_token&fields=full_name,photo_100&scope=friends&uids=13").
         to_return(:status => 200,
-          :body => '{"response":[{"uid":"11","full_name":"Павел Дуров", "photo_100":"http:\/\/cs109.vkontakte.ru\/u00001\/c_df2abf56.jpg"}]}',
+          :body => '{"response":[{"uid":"13","full_name":"Анджелина Джоли", "photo_100":"http:\/\/cs109.vkontakte.ru\/u00001\/c_df2abf56.jpg"}]}',
           :headers => {
             'Content-Type' => 'application/json'
           })
+
     end
 
     def login_session user_name

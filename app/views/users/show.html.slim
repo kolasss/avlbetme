@@ -2,7 +2,7 @@
   aside.col-md-4
     section.user_info
       h1 = title @user.name
-      = image_tag @user.photo
+      = image_tag @user.photo, class: 'user_avatar'
 
     section.user_friends
       h3 Друзья

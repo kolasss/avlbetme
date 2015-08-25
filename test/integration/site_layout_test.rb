@@ -1,8 +1,7 @@
 require 'test_helper'
 
 class SiteLayoutTest < ActionDispatch::IntegrationTest
-  # include Sorcery::TestHelpers::Rails::Controller
-  # include Sorcery::TestHelpers::Rails::Integration
+
   test "layout links for guest" do
     get root_path
     assert_template 'home/index'

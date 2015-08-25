@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     authorize @user
     @friends = @user.friends_list
 
+    # TODO: перенести статистику в юзера
     @user_stats = {win: {}, lose: {}, sum: {}}
     @numeric_types = StakeType.numeric
     @numeric_types.each do |type|

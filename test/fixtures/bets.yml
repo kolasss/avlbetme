@@ -34,3 +34,17 @@ opened_for_controller_test:
   started_at: 2015-05-22 16:57:10
   stopped_at: 2015-05-23 16:57:10
   status: 0
+
+canceled:
+  title: Спор на бабки отмененный
+  body: ффывф йцуйцуйцуфывфыв
+  started_at: 2015-05-22 16:57:10
+  stopped_at: 2015-05-23 16:57:10
+  status: 2
+
+finished_second:
+  title: Спор на бабки законченный депп просраал
+  body: олололфыв
+  started_at: 2015-05-22 16:57:10
+  stopped_at: 2015-05-23 16:57:10
+  status: 1

@@ -71,3 +71,33 @@ four_depp:
   stake_type: other
   user: depp
   bet: opened_for_controller_test
+
+five_depp:
+  objective: чтото сделатфывывь aasd
+  bid: 600
+  stake_type: rub
+  user: depp
+  bet: canceled
+five_pit:
+  objective: чтото сделатьфывфывфв2121 asfasfaf
+  bid: 600
+  stake_type: rub
+  user: pit
+  bet: canceled
+
+six_depp:
+  objective: чтото сделатьasd
+  bid: 300
+  stake_type: rub
+  user: depp
+  bet: finished
+  status: 2
+  paid: true
+six_pit:
+  objective: чтото сделать лучшеasda
+  bid: 300
+  stake_type: rub
+  user: pit
+  bet: finished
+  status: 1
+  paid: true

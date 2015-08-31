@@ -26,7 +26,7 @@ class BetsNewTest < ActionDispatch::IntegrationTest
     @depp.get new_bet_path
 
     bet_title = "valid title"
-    bet_body = 'olololo'
+    bet_body  = 'olololo'
     assert_difference 'Bet.count', 1 do
       @depp.post bets_path, bet: {
         title: bet_title,

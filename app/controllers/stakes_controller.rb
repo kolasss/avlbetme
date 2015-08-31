@@ -19,7 +19,7 @@ class StakesController < ApplicationController
   end
 
   def edit
-    @friends = current_user.friends_list_with_self
+    load_friends
   end
 
   def update

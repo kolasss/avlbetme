@@ -22,7 +22,7 @@ depp:
   name: Johny Depp
   photo: http://cs623631.vk.me/v623631476/1cbe5/depp.jpg
   friends:
-    vk_friends_ids: [12] #uid from authentications
+    vk_friends_ids: [12, 14] #uid from authentications
 pit:
   name: Brad Pit
   photo: http://cs623631.vk.me/v623631476/1cbe5/pit.jpg
@@ -34,3 +34,8 @@ jolie:
   friends:
     vk_friends_ids: [12]
   role: 1 #admin
+ford:
+  name: Harrison Ford
+  photo: http://cs623631.vk.me/v623631476/1cbe5/ford.jpg
+  friends:
+    vk_friends_ids: [11]

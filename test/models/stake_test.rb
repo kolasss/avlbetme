@@ -28,7 +28,7 @@ class StakeTest < ActiveSupport::TestCase
       bid: "1000",
       stake_type_id: stake_types(:rub).id,
       user_id: users(:jolie).id,
-      bet_id: bets(:opened).id,
+      bet_id: bets(:finished).id,
       objective: 'Подтянуться 10 раз'
     )
   end
@@ -54,6 +54,11 @@ class StakeTest < ActiveSupport::TestCase
 
   test "bet should be present" do
     @stake.bet = nil
+    assert_not @stake.valid?
+  end
+
+  test "stake should be uniq for user and bet" do
+    @stake.bet = bets(:opened)
     assert_not @stake.valid?
   end
 

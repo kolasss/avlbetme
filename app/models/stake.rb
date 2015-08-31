@@ -23,7 +23,8 @@
 class Stake < ActiveRecord::Base
   validates :bid, :presence => true
   validates :stake_type, :presence => true
-  validates :user, :presence => true
+  validates :user, :presence => true,
+                   uniqueness: {scope: :bet_id}
   validates :bet, :presence => true
 
   belongs_to :user

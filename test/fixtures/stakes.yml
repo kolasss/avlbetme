@@ -65,11 +65,11 @@ three_depp:
   stake_type: rub
   user: depp
   bet: opened_for_controller_test
-four_depp:
+four_ford:
   objective: чтото сделать asdqasdawe
   bid: 1200
   stake_type: other
-  user: depp
+  user: ford
   bet: opened_for_controller_test
 
 five_depp:
@@ -90,7 +90,7 @@ six_depp:
   bid: 300
   stake_type: rub
   user: depp
-  bet: finished
+  bet: finished_second
   status: 2
   paid: true
 six_pit:
@@ -98,6 +98,13 @@ six_pit:
   bid: 300
   stake_type: rub
   user: pit
-  bet: finished
+  bet: finished_second
   status: 1
   paid: true
+
+seven_depp:
+  objective: чтото сделать лучшеasda
+  bid: 700
+  stake_type: rub
+  user: depp
+  bet: single_stake

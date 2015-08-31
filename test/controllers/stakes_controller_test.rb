@@ -144,4 +144,15 @@ class StakesControllerTest < ActionController::TestCase
     assert_redirected_to @bet
   end
 
+  test "should not destroy single stake" do
+    login_user @user
+    bet = bets(:single_stake)
+    stake = bet.stakes.first
+
+    assert_no_difference 'Stake.count' do
+      delete :destroy, bet_id: bet, id: stake
+    end
+    assert_redirected_to bet
+  end
+
 end

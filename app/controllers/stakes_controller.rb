@@ -35,6 +35,7 @@ class StakesController < ApplicationController
 
   def destroy
     authorize @stake.bet, :edit?
+    # validate that stake not single in current bet
     if @stake.not_last? && @stake.destroy
       flash[:notice] = t('messages.deleted')
     else

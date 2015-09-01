@@ -24,7 +24,7 @@
 
 # не добавлять ставок в finished bet, либо поменять тест stake test "method not_last?..."
 one_depp:
-  objective: чтото сделать
+  objective: чтото сделать qew
   bid: 1000
   stake_type: rub
   user: depp

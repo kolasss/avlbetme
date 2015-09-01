@@ -14,12 +14,20 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
       assert_match friend.name, response.body
     end
 
-    @opened_bet = @user.bets.opened.first
-    assert_select 'a', href: @opened_bet, text: @opened_bet.title
-    @finished_bet = @user.bets.finished.first
-    assert_select 'a', href: @finished_bet, text: @finished_bet.title
-    @canceled_bet = @user.bets.canceled.first
-    assert_select 'a', href: @canceled_bet, text: @canceled_bet.title
+    assert_select 'div.user-bets' do
+      @opened_bet = @user.bets.opened.first
+      assert_select 'a[href=?]',
+        bet_path(@opened_bet),
+        text: @opened_bet.title
+      @finished_bet = @user.bets.finished.first
+      assert_select 'a[href=?]',
+        bet_path(@finished_bet),
+        text: @finished_bet.title
+      @canceled_bet = @user.bets.canceled.first
+      assert_select 'a[href=?]',
+        bet_path(@canceled_bet),
+        text: @canceled_bet.title
+    end
 
     @stake_won = @user.stakes.win.first
     assert_match @stake_won.objective, response.body

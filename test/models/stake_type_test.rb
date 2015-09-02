@@ -3,10 +3,10 @@
 # Table name: stake_types
 #
 #  id         :integer          not null, primary key
-#  title      :character varyin not null
+#  title      :string           not null
 #  numeric    :boolean          default(FALSE)
-#  created_at :timestamp withou not null
-#  updated_at :timestamp withou not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 require 'test_helper'

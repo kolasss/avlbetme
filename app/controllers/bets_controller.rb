@@ -4,6 +4,8 @@ class BetsController < ApplicationController
 
   def show
     @stakes = @bet.stakes
+    @audits = @bet.audits + @bet.associated_audits
+    @audits.sort_by!(&:created_at).reverse!
   end
 
   def new

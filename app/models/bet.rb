@@ -3,16 +3,19 @@
 # Table name: bets
 #
 #  id         :integer          not null, primary key
-#  title      :character varyin not null
+#  title      :string           not null
 #  body       :text
-#  started_at :timestamp withou
-#  stopped_at :timestamp withou
+#  started_at :datetime
+#  stopped_at :datetime
 #  status     :integer          default(0), not null
-#  created_at :timestamp withou not null
-#  updated_at :timestamp withou not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 class Bet < ActiveRecord::Base
+  audited
+  has_associated_audits
+
   validates :title, :presence => true
 
   enum status: {
@@ -50,10 +53,10 @@ class Bet < ActiveRecord::Base
   end
 
   def cancel!
-    canceled!
     stakes.each do |stake|
       stake.pass!
     end
+    canceled!
   end
 
   def has_user? user

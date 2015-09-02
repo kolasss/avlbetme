@@ -3,12 +3,12 @@
 # Table name: users
 #
 #  id                           :integer          not null, primary key
-#  name                         :character varyin not null
-#  photo                        :character varyin
-#  created_at                   :timestamp withou
-#  updated_at                   :timestamp withou
-#  remember_me_token            :character varyin
-#  remember_me_token_expires_at :timestamp withou
+#  name                         :string           not null
+#  photo                        :string
+#  created_at                   :datetime
+#  updated_at                   :datetime
+#  remember_me_token            :string
+#  remember_me_token_expires_at :datetime
 #  friends                      :jsonb            default({}), not null
 #  role                         :integer          default(0), not null
 #

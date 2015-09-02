@@ -1,0 +1,9 @@
+.panel.panel-default
+  .panel-heading
+    h3.panel-title
+      | Лог
+  ul.list-group
+    - @audits.each do |audit|
+      li.list-group-item
+        = audit.inspect
+

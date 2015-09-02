@@ -4,10 +4,10 @@
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer          not null
-#  provider   :character varyin not null
-#  uid        :character varyin not null
-#  created_at :timestamp withou
-#  updated_at :timestamp withou
+#  provider   :string           not null
+#  uid        :string           not null
+#  created_at :datetime
+#  updated_at :datetime
 #
 # Indexes
 #

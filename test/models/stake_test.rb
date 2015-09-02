@@ -10,8 +10,8 @@
 #  bet_id        :integer
 #  status        :integer          default(0), not null
 #  paid          :boolean          default(FALSE)
-#  created_at    :timestamp withou not null
-#  updated_at    :timestamp withou not null
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #
 # Indexes
 #

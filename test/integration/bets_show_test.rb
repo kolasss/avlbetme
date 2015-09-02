@@ -3,7 +3,7 @@ require 'test_helper'
 class BetShowTest < ActionDispatch::IntegrationTest
 
   def setup
-    @bet = bets(:opened)
+    @bet = bets(:finished)
     @stake = @bet.stakes.first
   end
 

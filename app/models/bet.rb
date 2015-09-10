@@ -13,9 +13,6 @@
 #
 
 class Bet < ActiveRecord::Base
-  audited
-  has_associated_audits
-
   validates :title, :presence => true
 
   enum status: {

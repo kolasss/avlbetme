@@ -21,8 +21,6 @@
 #
 
 class Stake < ActiveRecord::Base
-  audited :associated_with => :bet
-
   validates :bid, :presence => true
   validates :stake_type, :presence => true
   validates :user, :presence => true,

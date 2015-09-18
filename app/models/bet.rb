@@ -13,6 +13,8 @@
 #
 
 class Bet < ActiveRecord::Base
+  include BetActivities
+
   validates :title, :presence => true
 
   enum status: {

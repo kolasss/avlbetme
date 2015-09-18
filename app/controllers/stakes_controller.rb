@@ -1,6 +1,6 @@
 class StakesController < ApplicationController
   before_action :set_stake, except: [ :new, :create ]
-  before_action :set_bet, except: [ :update, :destroy ]
+  before_action :set_bet
 
   def new
     @stake = @bet.stakes.new
@@ -10,6 +10,7 @@ class StakesController < ApplicationController
   def create
     @stake = @bet.stakes.new(stake_params)
     if @stake.save
+      @stake.log_creation current_user
       flash[:info] = t('messages.created')
       redirect_to @bet
     else
@@ -23,10 +24,10 @@ class StakesController < ApplicationController
   end
 
   def update
-    authorize @stake.bet, :edit?
     if @stake.update_attributes(stake_params)
+      @stake.log_update current_user
       flash[:info] = t('messages.updated')
-      redirect_to @stake.bet
+      redirect_to @bet
     else
       load_friends
       render :edit, alert: t('messages.cant_update')
@@ -34,14 +35,14 @@ class StakesController < ApplicationController
   end
 
   def destroy
-    authorize @stake.bet, :edit?
     # validate that stake not single in current bet
     if @stake.not_last? && @stake.destroy
+      @stake.log_deletion current_user
       flash[:notice] = t('messages.deleted')
     else
       flash[:alert] = t('messages.cant_delete')
     end
-    redirect_to @stake.bet
+    redirect_to @bet
   end
 
   private

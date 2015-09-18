@@ -4,8 +4,7 @@ class BetsController < ApplicationController
 
   def show
     @stakes = @bet.stakes
-    # @audits = @bet.audits + @bet.associated_audits
-    # @audits.sort_by!(&:created_at).reverse!
+    @activities = @bet.activities
   end
 
   def new
@@ -19,6 +18,7 @@ class BetsController < ApplicationController
       authorize @bet
       if @bet.save
         @bet.create_default_stake_for_user current_user.id
+        @bet.log_creation current_user
         flash[:info] = t('messages.created')
         redirect_to @bet
       else
@@ -32,6 +32,8 @@ class BetsController < ApplicationController
 
   def update
     if @bet.update_attributes(bet_params)
+      # debugger
+      @bet.log_update current_user
       flash[:info] = t('messages.updated')
       redirect_to @bet
     else
@@ -41,17 +43,20 @@ class BetsController < ApplicationController
 
   def destroy
     @bet.destroy
+    @bet.log_deletion current_user
     redirect_to root_path, notice: t('messages.deleted')
   end
 
   # для выбора выйгравшего
   def stop
+    # флаг для отображения контролов в views/bets/_bet_stake.html.slim
     @stop = true
     @stakes = @bet.stakes
   end
 
   def finish
     if @bet.finish! params[:results]
+      @bet.log_update current_user
       redirect_to @bet, notice: t('bet.messages.finished')
     else
       redirect_to stop_bet_path(@bet),
@@ -60,7 +65,9 @@ class BetsController < ApplicationController
   end
 
   def cancel
-    @bet.cancel!
+    if @bet.cancel!
+      @bet.log_update current_user
+    end
     redirect_to @bet, notice: t('bet.messages.canceled')
   end
 

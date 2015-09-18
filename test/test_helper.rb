@@ -83,4 +83,19 @@ class ActionDispatch::IntegrationTest
         sess.https!(false)
       end
     end
+
+    module StakeTestsConcern
+      def valid_select_options
+        current_user = assigns[:current_user]
+
+        current_user.friends_list_with_self.each do |user|
+          assert_select 'option', value: user.id
+        end
+
+        StakeType.all.each do |type|
+          assert_select 'option', value: type.id
+        end
+      end
+    end
+
 end

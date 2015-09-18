@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# one:
+#   user_id:
+#   bet_id:
+#   stake_id:
+#   type:
+#   changes:
+
+# two:
+#   user_id:
+#   bet_id:
+#   stake_id:
+#   type:
+#   changes:

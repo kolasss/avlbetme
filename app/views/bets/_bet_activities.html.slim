@@ -3,7 +3,7 @@
     h3.panel-title
       | Лог
   ul.list-group
-    - @audits.each do |audit|
+    - @activities.each do |activity|
       li.list-group-item
-        = audit.inspect
+        = render activity, activity: activity
 

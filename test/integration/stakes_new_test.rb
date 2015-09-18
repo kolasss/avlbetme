@@ -12,7 +12,7 @@ class StakesNewTest < ActionDispatch::IntegrationTest
     @depp.get new_bet_stake_path(@bet)
     @depp.assert_template 'stakes/new'
 
-    @depp.extend(CustomDsl)
+    @depp.extend(StakeTestsConcern)
     @depp.valid_select_options
 
     assert_no_difference 'Stake.count' do
@@ -54,21 +54,5 @@ class StakesNewTest < ActionDispatch::IntegrationTest
     @depp.assert_match bet_objective, @depp.response.body
     @depp.assert_match bet_bid, @depp.response.body
   end
-
-  private
-
-    module CustomDsl
-      def valid_select_options
-        current_user = assigns[:current_user]
-
-        current_user.friends_list_with_self.each do |user|
-          assert_select 'option', value: user.id
-        end
-
-        StakeType.all.each do |type|
-          assert_select 'option', value: type.id
-        end
-      end
-    end
 
 end

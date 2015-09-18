@@ -21,6 +21,8 @@
 #
 
 class Stake < ActiveRecord::Base
+  include StakeActivities
+
   validates :bid, :presence => true
   validates :stake_type, :presence => true
   validates :user, :presence => true,

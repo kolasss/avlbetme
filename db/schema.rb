@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150601082315) do
+ActiveRecord::Schema.define(version: 20150916084705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,19 @@ ActiveRecord::Schema.define(version: 20150601082315) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "feed_activities", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "bet_id"
+    t.integer  "stake_id"
+    t.string   "type"
+    t.jsonb    "details",    default: {}, null: false
+    t.datetime "created_at",              null: false
+  end
+
+  add_index "feed_activities", ["bet_id"], name: "index_feed_activities_on_bet_id", using: :btree
+  add_index "feed_activities", ["stake_id"], name: "index_feed_activities_on_stake_id", using: :btree
+  add_index "feed_activities", ["user_id"], name: "index_feed_activities_on_user_id", using: :btree
 
   create_table "stake_types", force: :cascade do |t|
     t.string   "title",                      null: false
@@ -73,4 +86,7 @@ ActiveRecord::Schema.define(version: 20150601082315) do
   add_index "users", ["friends"], name: "index_users_on_friends", using: :gin
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
 
+  add_foreign_key "feed_activities", "bets"
+  add_foreign_key "feed_activities", "stakes"
+  add_foreign_key "feed_activities", "users"
 end

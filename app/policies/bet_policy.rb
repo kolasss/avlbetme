@@ -34,4 +34,8 @@ class BetPolicy < ApplicationPolicy
   def cancel?
     edit?
   end
+
+  def activities?
+    show?
+  end
 end

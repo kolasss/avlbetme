@@ -1,12 +1,26 @@
-.panel.panel-default
-  .panel-heading
-    h3.panel-title
-      | Лог
-  ul.list-group
-    - @activities.each do |activity|
-      li.list-group-item
-        = render activity, activity: activity
+.bet-activities.log-list-hidden
+  button.btn.btn-primary.btn-log-switcher type="button"
+    => fa_icon 'chevron-up'
+    | Лог
+  .log-list
+    .activites-loading-icon
+      = fa_icon 'spinner pulse 5x'
+
+javascript:
+  var activities_bet_path = "#{activities_bet_path(@bet)}"
 
 coffee:
+  activitiesLoaded = false
+
+  loadActivities = ->
+    if !activitiesLoaded
+      $.get activities_bet_path, (data) ->
+        $('.log-list').html data
+        activitiesLoaded = true
+
+
   jQuery ->
-    $('[data-toggle="popover"]').popover()
+    $('.btn-log-switcher').click ()->
+      $('.bet-activities').toggleClass('log-list-hidden')
+      $(@).find('.fa').toggleClass('fa-chevron-up fa-chevron-down')
+      loadActivities()

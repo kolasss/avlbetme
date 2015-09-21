@@ -9,9 +9,12 @@ Rails.application.routes.draw do
   get '3770abc2f3d1f90bef6b7e010d153fd2d8f' => 'users#krytoi'
 
   resources :bets, except: [:index] do
-    get :stop, on: :member
-    post :finish, on: :member
-    get :cancel, on: :member
+    member do
+      get :stop
+      post :finish
+      get :cancel
+      get :activities
+    end
     resources :stakes, except: [:index, :show]
   end
 

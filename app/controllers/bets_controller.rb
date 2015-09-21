@@ -3,8 +3,7 @@ class BetsController < ApplicationController
   before_action :require_login, except: [:show]
 
   def show
-    @stakes = @bet.stakes
-    @activities = @bet.activities
+    @stakes = @bet.stakes.includes :user, :stake_type
   end
 
   def new
@@ -69,6 +68,11 @@ class BetsController < ApplicationController
       @bet.log_update current_user
     end
     redirect_to @bet, notice: t('bet.messages.canceled')
+  end
+
+  def activities
+    @activities = @bet.activities.includes :user
+    render layout: false
   end
 
   private

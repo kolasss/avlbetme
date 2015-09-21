@@ -27,6 +27,8 @@ class UsersController < ApplicationController
         end
       @user_stats[:sum][type.title] = @user_stats[:win][type.title] - @user_stats[:lose][type.title]
     end
+
+    # @activities = @user.activities
   end
 
   def destroy

@@ -29,8 +29,7 @@ module Feed
     store_accessor :details, :bet_title
 
     def to_partial_path
-      # "feed/#{self.class.name.demodulize.underscore}"
-      "feed/bet_create"
+      "feed/#{self.class.name.demodulize.underscore}"
     end
 
   end

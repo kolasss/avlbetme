@@ -46,7 +46,14 @@ ru:
         body: Описание
         started_at: Дата начала
         stopped_at: Дата конца
-        
+      stake:
+        user: Пользователь
+        user_id: Пользователь
+        objective: Описание
+        stake_type: Тип
+        stake_type_id: Тип
+        bid: Ставка
+
 
     placeholders:
       defaults:

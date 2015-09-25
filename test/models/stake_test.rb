@@ -84,4 +84,10 @@ class StakeTest < ActiveSupport::TestCase
     one_depp.reload
     assert_not one_depp.not_last?
   end
+
+  test "method payable? should return correct value" do
+    assert @stake.payable?
+    @stake.stake_type = stake_types(:other)
+    assert_not @stake.payable?
+  end
 end

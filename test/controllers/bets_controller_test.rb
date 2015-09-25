@@ -186,4 +186,15 @@ class BetsControllerTest < ActionController::TestCase
     assert_redirected_to @bet
   end
 
+  test "should redirect activities when not logged in" do
+    get :activities, id: @bet, xhr: true
+    assert_redirected_to auth_at_provider_path(:provider => :vk)
+  end
+
+  test "should get activities when logged in" do
+    login_user @user
+    get :activities, id: @bet, xhr: true
+    assert_response :success
+  end
+
 end

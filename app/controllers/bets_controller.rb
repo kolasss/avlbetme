@@ -72,7 +72,6 @@ class BetsController < ApplicationController
 
   def activities
     @activities = @bet.activities.includes :user
-    render layout: false
   end
 
   private

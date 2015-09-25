@@ -1,7 +1,7 @@
 .panel.panel-default.bet-stake
   .panel-heading
     h3.panel-title
-      = stake.user.name
+      = link_to stake.user.name, stake.user
     - if policy(@bet).edit? && !@stop
       .control-buttons
         = edit_link edit_bet_stake_path(@bet, stake)
@@ -29,3 +29,6 @@
     - else
       p = stake.status
 
+    - if stake.payable?
+      b Оплачен:
+      p = boolean_icon stake.paid

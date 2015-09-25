@@ -1,6 +1,6 @@
 ul.list-group
   - @activities.each do |activity|
-    li.list-group-item
+    li.list-group-item id="activity-#{activity.id}"
       = render activity, activity: activity
 
 coffee:

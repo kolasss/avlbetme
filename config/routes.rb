@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       get :stop
       post :finish
       get :cancel
-      get :activities
+      get :activities, defaults: {format: :js}
     end
     resources :stakes, except: [:index, :show]
   end

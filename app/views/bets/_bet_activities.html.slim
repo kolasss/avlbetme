@@ -14,10 +14,12 @@ coffee:
 
   loadActivities = ->
     if !activitiesLoaded
-      $.get activities_bet_path, (data) ->
-        $('.log-list').html data
-        activitiesLoaded = true
-
+      $.get activities_bet_path
+        .done (data) ->
+          $('.log-list').html data
+          activitiesLoaded = true
+        .error (data) ->
+          $('.log-list').html 'Ошибка'
 
   jQuery ->
     $('.btn-log-switcher').click ()->

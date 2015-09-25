@@ -47,4 +47,8 @@ class Stake < ActiveRecord::Base
   def not_last?
     bet.stakes.length > 1
   end
+
+  def payable?
+    stake_type.numeric?
+  end
 end

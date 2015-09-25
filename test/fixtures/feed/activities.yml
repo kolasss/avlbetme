@@ -1,15 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# one:
-#   user_id:
-#   bet_id:
-#   stake_id:
-#   type:
-#   changes:
+one:
+  user: depp
+  bet: finished
+  type: "Feed::BetCreate"
+  details: '{"bet_title":"finished"}'
 
-# two:
-#   user_id:
-#   bet_id:
-#   stake_id:
-#   type:
-#   changes:
+two:
+  user: depp
+  bet: finished
+  stake: one_pit
+  type: "Feed::StakeCreate"
+  details: '{"bet_title":"finished", "stake_user_name":"pit"}'

@@ -41,6 +41,17 @@ class BetShowTest < ActionDispatch::IntegrationTest
     jolie.test_buttons_for_authorized_user
   end
 
+  test "bet activities for guest" do
+    get bet_path(@bet)
+    assert_select '.bet-activities', false
+  end
+
+  test "bet activities for user" do
+    depp = login_session(:depp)
+    depp.get bet_path(@bet)
+    depp.assert_select '.bet-activities'
+  end
+
   private
 
     module CustomDsl

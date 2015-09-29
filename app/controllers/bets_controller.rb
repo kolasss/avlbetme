@@ -31,7 +31,6 @@ class BetsController < ApplicationController
 
   def update
     if @bet.update_attributes(bet_params)
-      # debugger
       @bet.log_update current_user
       flash[:info] = t('messages.updated')
       redirect_to @bet
@@ -41,8 +40,9 @@ class BetsController < ApplicationController
   end
 
   def destroy
-    @bet.destroy
+    # сперва логирование для отсылки нотификаций юзерам бета
     @bet.log_deletion current_user
+    @bet.destroy
     redirect_to root_path, notice: t('messages.deleted')
   end
 

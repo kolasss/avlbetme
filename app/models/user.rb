@@ -37,8 +37,12 @@ class User < ActiveRecord::Base
 
   has_many :stakes, :dependent => :restrict_with_error
   has_many :bets, through: :stakes
+
   has_many :activities, :dependent => :restrict_with_error,
       class_name: Feed::Activity
+  has_many :notifications, :dependent => :destroy
+  has_many :friends_activities, through: :notifications,
+      source: :activity
 
   # store_accessor :friends, :vk_friends_ids
 

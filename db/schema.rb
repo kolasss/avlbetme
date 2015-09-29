@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916084705) do
+ActiveRecord::Schema.define(version: 20150928111251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 20150916084705) do
   add_index "feed_activities", ["bet_id"], name: "index_feed_activities_on_bet_id", using: :btree
   add_index "feed_activities", ["stake_id"], name: "index_feed_activities_on_stake_id", using: :btree
   add_index "feed_activities", ["user_id"], name: "index_feed_activities_on_user_id", using: :btree
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "activity_id"
+    t.datetime "created_at",  null: false
+  end
+
+  add_index "notifications", ["activity_id"], name: "index_notifications_on_activity_id", using: :btree
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "stake_types", force: :cascade do |t|
     t.string   "title",                      null: false

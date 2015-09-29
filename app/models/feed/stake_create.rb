@@ -22,11 +22,13 @@ module Feed
     include StakeActivityCommon
 
     def StakeCreate.create_activity user, stake
-      create(
+      activity = create(
         user: user,
         bet: stake.bet,
         stake: stake
       )
+      activity.notify user
     end
+
   end
 end

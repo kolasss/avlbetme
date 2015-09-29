@@ -26,11 +26,19 @@ module Feed
         bet_title: stake.bet.title,
         stake_user_name: stake.user.name
       }
-      create(
+      activity = create(
         user: user,
         bet: stake.bet,
         details: details
       )
+      activity.notify stake.user
     end
+
+    protected
+
+      def users_for_notify user
+        [user]
+      end
+
   end
 end

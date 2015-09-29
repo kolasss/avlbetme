@@ -1,6 +1,20 @@
-h1 Последние пари
+.col-md-6
+  h2 Последние пари
 
-ul.bets
-  = render @bets
+  ul.bets
+    = render @bets
 
-= paginate @bets
+  = paginate @bets
+
+
+- if logged_in?
+  .col-md-6
+    h2 События
+    ul.list-group
+      - @friends_activities.each do |activity|
+        li.list-group-item id="activity-#{activity.id}"
+          = render activity, activity: activity
+
+    coffee:
+      jQuery ->
+        $('[data-toggle="popover"]').popover()

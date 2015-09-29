@@ -25,8 +25,6 @@ gem 'simple_form'
 gem 'rails-i18n' #переводы
 gem 'kaminari' #pagination
 
-gem 'stream_rails' # https://getstream.io/ Нотификации
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -46,7 +44,8 @@ group :test do
   gem 'minitest-reporters'
   gem 'mini_backtrace'
   # gem 'guard-minitest'
-  gem 'webmock'
+  gem 'webmock' #mocking web requests
+  gem 'simplecov', :require => false
 end
 
 group :development do

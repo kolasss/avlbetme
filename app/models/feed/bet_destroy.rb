@@ -21,10 +21,18 @@ module Feed
   class BetDestroy < Activity
 
     def BetDestroy.create_activity user, bet
-      create(
+      activity = create(
         user: user,
         details: {bet_title: bet.title}
       )
+      activity.notify bet.users
     end
+
+    protected
+
+      def users_for_notify users
+        users
+      end
+
   end
 end

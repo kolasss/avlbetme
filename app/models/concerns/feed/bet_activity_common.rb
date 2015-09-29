@@ -7,6 +7,7 @@ module Feed
     end
 
     protected
+
       def store_metadata
         self.details ||= {}
         self.details.merge!({bet_title: bet.title})

@@ -27,12 +27,20 @@ module Feed
       if bet.previous_changes.present?
         updates = bet.previous_changes.except('updated_at')
         details = {updates: updates}
-        create(
+        activity = create(
           user: user,
           bet: bet,
           details: details
         )
+        activity.notify user
       end
     end
+
+    protected
+
+      def users_for_notify user
+        bet.present? ? bet.users.where.not(id: user.id) : []
+      end
+
   end
 end

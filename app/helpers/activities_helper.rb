@@ -29,7 +29,7 @@ module ActivitiesHelper
 
   def activity_updates activity
     html = ""
-    model = activity.try(:stake) ? 'stake' : 'bet'
+    model = activity.class.name.include?('Stake') ? 'stake' : 'bet'
     activity.updates.each do |update|
       html += render_update_details update, model
     end
@@ -68,7 +68,7 @@ module ActivitiesHelper
       content = %{
         Было:
         #{old_data}
-        <br>
+        <hr>
         Стало:
         #{new_data}
       }

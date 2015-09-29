@@ -27,13 +27,15 @@ module Feed
       if stake.previous_changes.present?
         updates = stake.previous_changes.except('updated_at')
         details = {updates: updates}
-        create(
+        activity = create(
           user: user,
           bet: stake.bet,
           stake: stake,
           details: details
         )
+        activity.notify user
       end
     end
+
   end
 end

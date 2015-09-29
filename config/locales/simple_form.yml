@@ -18,7 +18,6 @@ ru:
       defaults:
         title: Наименование
         file: Файл
-        kind: Тип
 
       user:
         password: Пароль
@@ -67,7 +66,7 @@ ru:
         #   password: Новый пароль
         #   password_confirmation: Подтверждение нового пароля
 
-      category:
-        title: Наименование
-      subcategory:
-        title: Наименование
+      # category:
+      #   title: Наименование
+      # subcategory:
+      #   title: Наименование

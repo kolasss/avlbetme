@@ -23,4 +23,5 @@ class Feed::ActivityTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+  # TODO tests for activities
 end

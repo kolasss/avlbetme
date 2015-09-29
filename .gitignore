@@ -20,6 +20,7 @@
 /spring/*.pid
 
 /public/uploads
+/public/assets
 /config/database.yml
 /config/settings.yml
 /coverage

@@ -45,6 +45,7 @@ ru:
         body: Описание
         started_at: Дата начала
         stopped_at: Дата конца
+        status: Статус
       stake:
         user: Пользователь
         user_id: Пользователь

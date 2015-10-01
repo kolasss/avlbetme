@@ -12,3 +12,23 @@ two:
   stake: one_pit
   type: "Feed::StakeCreate"
   details: '{"bet_title":"finished", "stake_user_name":"pit"}'
+
+without_stake:
+  user: depp
+  bet: finished
+  type: "Feed::StakeUpdate"
+  details: '{"bet_title":"finished", "stake_user_name":"jolie"}'
+
+without_bet:
+  user: depp
+  type: "Feed::BetDestroy"
+  details: '{"bet_title":"deleted bet"}'
+
+update_bet:
+  user: depp
+  bet: finished
+  type: "Feed::BetUpdate"
+  details: '{
+    "updates":{"body":["old", "new"]},
+    "bet_title":"finished"
+    }'

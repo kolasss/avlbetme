@@ -1,15 +1,17 @@
 module ActivitiesHelper
-  def activity_user_link user
-    link_to user do
-      user.name
-    end
-  end
 
+  # использовать с Feed::StakeCreate и Feed::StakeUpdate
   def activity_stake_user_link activity
     if activity.stake.present?
       activity_user_link activity.stake.user
     else
       activity_stake_user_name activity
+    end
+  end
+
+  def activity_user_link user
+    link_to user do
+      user.name
     end
   end
 

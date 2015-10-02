@@ -1,28 +1,21 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Site for managing your bets
 
-Things you may want to cover:
+# verions
+* ruby version 2.2.3
+* rails 4.2.4
+* postgresql 9.4.4
 
-* Ruby version
+# settings
+* database.yml
+* settings.yml
 
-* System dependencies
+# database
+create database:
+  rake db:setup
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+# tests
+bin/guard
+or
+bin/rake test

@@ -1,0 +1,17 @@
+default: &default
+  vk_key: 'key'
+  vk_secret: 'secret'
+
+development:
+  <<: *default
+  app_host: 'localhost:3000'
+
+test:
+  <<: *default
+  app_host: 'localhost:3000'
+
+production:
+  <<: *default
+  app_host: 'avlbet.me'
+  secret_key_base: 'your-key'
+  # mandrillapp_password: "mandrillapp_password"

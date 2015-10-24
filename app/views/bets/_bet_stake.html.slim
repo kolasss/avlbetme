@@ -12,9 +12,9 @@
       .clearfix
     - if stake.objective.present?
       b Цель:
-      p = stake.objective
+      = simple_format stake.objective
     b Ставка:
-    p = stake.bid
+    = simple_format stake.bid
     p = stake.stake_type.title
 
     b Статус:

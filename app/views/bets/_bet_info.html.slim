@@ -1,7 +1,7 @@
 h1 = link_to @bet.title, @bet
 
 blockquote
-  p = @bet.body
+  = simple_format @bet.body
 
 table.table.table-condensed
   tbody

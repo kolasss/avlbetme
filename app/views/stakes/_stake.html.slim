@@ -1,5 +1,5 @@
 li
   p = link_to stake.bet.title, stake.bet
-  p = stake.objective
+  = simple_format stake.objective if stake.objective.present?
   p = stake.stake_type.title
   p = stake.bid

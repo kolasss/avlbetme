@@ -28,10 +28,6 @@ group :development, :test do
   gem 'spring'
 end
 
-group :production do
-  gem 'thin'
-end
-
 group :test do
   gem 'minitest-reporters'
   gem 'mini_backtrace'
@@ -47,9 +43,9 @@ group :development do
   gem 'guard-minitest'
 
   # ruby deployment system
-  # gem "capistrano", "~> 3.4"
-  # gem 'capistrano-rails', '~> 1.1'
-  # gem 'capistrano-passenger'
-  # gem 'capistrano-rbenv', '~> 2.0'
-  # gem 'capistrano-bundler', '~> 1.1.2'
+  gem "capistrano", "~> 3.4"
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-passenger'
+  gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-bundler', '~> 1.1.2'
 end

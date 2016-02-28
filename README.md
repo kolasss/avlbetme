@@ -3,8 +3,8 @@
 Site for managing your bets
 
 # verions
-* ruby version 2.2.3
-* rails 4.2.4
+* ruby version 2.3.0
+* rails 4.2.5.1
 * postgresql 9.4.4
 
 # settings
@@ -23,3 +23,7 @@ bin/rake test
 # TODO
 * обновление инфы с вк
 * тесты
+
+## deploy
+
+bundle exec cap production deploy
